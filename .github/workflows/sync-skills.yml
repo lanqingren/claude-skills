@@ -19,12 +19,12 @@ jobs:
           git clone --depth=1 --filter=blob:none --sparse \
             https://github.com/anthropics/skills.git _upstream
           cd _upstream
-          git sparse-checkout set skills/skills
+          git sparse-checkout set skills
           cd ..
 
       - name: 同步到你仓库根目录（不删你自己加的文件）
         run: |
-          rsync -av _upstream/skills/skills/ ./
+          rsync -av _upstream/skills/ ./
           rm -rf _upstream
 
       - name: 检查是否有变更
