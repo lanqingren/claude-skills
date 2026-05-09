@@ -1,1 +1,44 @@
+name: Sync Anthropic Skills
 
+on:
+  schedule:
+    - cron: '0 2 * * 1'
+  workflow_dispatch:
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout skill仓库
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 稀疏拉取上游 skills/skills 目录
+        run: |
+          git clone --depth=1 --filter=blob:none --sparse \
+            https://github.com/anthropics/skills.git _upstream
+          cd _upstream
+          git sparse-checkout set skills/skills
+          cd ..
+
+      - name: 同步到你仓库根目录（不删你自己加的文件）
+        run: |
+          rsync -av _upstream/skills/skills/ ./
+          rm -rf _upstream
+
+      - name: 检查是否有变更
+        id: diff
+        run: |
+          git diff --quiet && git diff --cached --quiet \
+            && echo "changed=false" >> $GITHUB_OUTPUT \
+            || echo "changed=true" >> $GITHUB_OUTPUT
+
+      - name: 提交并推送
+        if: steps.diff.outputs.changed == 'true'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add -A
+          git commit -m "chore: sync anthropics/skills $(date +'%Y-%m-%d')"
+          git push
