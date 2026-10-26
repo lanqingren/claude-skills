@@ -1,0 +1,41 @@
+{
+  "_comment": "Configuration for math-mistake-review-skill",
+  "skill": {
+    "name": "math-mistake-review-skill",
+    "version": "1.0.0",
+    "description": "初中数学错题复习素材生成器"
+  },
+  "output": {
+    "default_directory": ".",
+    "file_extension": ".md",
+    "encoding": "utf-8"
+  },
+  "curriculum": {
+    "based_on": "义务教育数学课程标准（2022年版）2025修订",
+    "target_exam": "中考数学",
+    "grade_level": "初中（7-9年级）",
+    "years_covered": "2025-2026"
+  },
+  "variation_rules": {
+    "count": 2,
+    "same_difficulty": true,
+    "same_knowledge_point": true,
+    "require_numeric_verification": true
+  },
+  "svg": {
+    "viewBox": "0 0 600 500",
+    "point_radius": 3,
+    "label_font_size": 16,
+    "main_stroke": "black",
+    "main_stroke_width": 2,
+    "dash_pattern": "5,5",
+    "grid_color": "#ddd",
+    "_note": "SVG specifications for geometric diagrams"
+  },
+  "dependencies": {
+    "_note": "This skill requires no external APIs or Python packages beyond stdlib",
+    "python": ">=3.8",
+    "external_packages": [],
+    "llm_requirement": "Vision-capable model for reading uploaded images"
+  }
+}

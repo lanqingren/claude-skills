@@ -1,0 +1,1337 @@
+<!DOCTYPE html>
+<!--
+  合并演示文件 - 类别: 多边形&3D棱柱
+  包含 10 个演示: 多边形&3D棱柱_多边形拔起_3D棱柱.html, 多边形&3D棱柱_多边形点击事件.html, 多边形&3D棱柱_多边形选中高亮显示.html, 多边形&3D棱柱_多边形飞地.html, 多边形&3D棱柱_带飞地的区域实现高亮.html, 多边形&3D棱柱_环形(带洞)多边形.html, 多边形&3D棱柱_简单圆形.html, 多边形&3D棱柱_简单多边形.html, 多边形&3D棱柱_自定义多边形样式.html, 多边形&3D棱柱_自定义边线样式.html
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>多边形&3D棱柱 - 合并演示</title>
+</head>
+<body>
+
+<!-- ============================================
+     Demo: 多边形&3D棱柱_多边形拔起_3D棱柱.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多边形拔起:3D棱柱</title>
+</head>
+<script charset="utf-8"
+    src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    #mapContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body onload="initMap()">
+    <div id="mapContainer"></div>
+</body>
+
+</html>
+<script>
+function initMap() {
+	//初始化地图
+	var map = new TMap.Map('mapContainer', {
+		center: new TMap.LatLng(40.036907,116.262577),//地图显示中心点
+		zoom:16,	//缩放级别
+		pitch:45,
+	});
+	var path = [
+		[40.03847438521698,116.26140117645264],
+		[40.038178675807515,116.26140117645264],
+		[40.03791582192258,116.26208782196045],
+		[40.037488682198514,116.26165866851807],
+		[40.03719296851454,116.26243114471436],
+		[40.037258682777356,116.26328945159912],
+		[40.037455825185845,116.26311779022217],
+		[40.03768582394209,116.2642765045166],
+		[40.037882965115706,116.26423358917236],
+		[40.038342958971086,116.26384735107422],
+		[40.03870438053774,116.26341819763184],
+		[40.03854009824492,116.26260280609131],
+		[40.03854009824492,116.26174449920654]
+	]
+	//转为LatLng数组
+	path = path.map(p => {
+		return new TMap.LatLng(p[0], p[1]);
+	});
+
+	//初始化polygon
+	var polygon = new TMap.MultiPolygon({
+		id: 'polygon-layer', //图层id
+		map: map, //设置多边形图层显示到哪个地图实例中
+		//多边形样式
+		styles: {
+			'polygon': new TMap.ExtrudablePolygonStyle({
+				'color': 'rgba(0,125,255,0.9)', //面填充色
+				'showBorder':true, //是否显示拔起面的边线
+				'extrudeHeight':30, //多边形拔起高度
+				'borderColor': 'rgba(0,125,255,1)' //边线颜色
+			})
+		},
+		//多边形数据
+		geometries: [
+			{
+				'id': 'p1', //该多边形在图层中的唯一标识（删除、更新数据时需要）
+				'styleId': 'polygon', //绑定样式名
+				'paths': path, //多边形轮廓
+			}
+		]
+	});
+}
+</script>
+
+<!-- ============================================
+     Demo: 多边形&3D棱柱_多边形点击事件.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多边形点击事件</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    #mapContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    #info {
+        display: none;
+        position: absolute;
+        left: 30px;
+        top: 90px;
+        background: #fff;
+        border-radius: 5px;
+        padding: 10px;
+        z-index: 9999;
+    }
+
+    #buttonContainer {
+        position: absolute;
+        left: 30px;
+        top: 30px;
+        z-index: 9999;
+    }
+
+    #buttonContainer input {
+        background: #fff;
+        padding: 10px;
+        width: 120xp;
+        outline-style: none;
+        margin-right: 10px;
+        border-radius: 10px;
+    }
+</style>
+
+<body onload="initMap()">
+    <div id="buttonContainer">
+        <input type="button" id = "bindClick" value="绑定点击事件">
+        <input type="button" id = "unbindClick" value="解绑点击事件">
+    </div>
+    <div id="info">
+    </div>
+    <div id="mapContainer"></div>
+</body>
+
+</html>
+<script>
+    var map = null;
+    var polygon = null;
+    var infoDom = document.getElementById('info');
+    var bindBtn = document.getElementById('bindClick');
+    var unbindBtn = document.getElementById('unbindClick');
+    function initMap() {
+      var center = new TMap.LatLng(40.040452, 116.273486); // 设置中心点坐标
+      // 初始化地图
+      map = new TMap.Map('mapContainer', {
+        center: center,
+        zoom: 16,
+      });
+      var buildingPaths = {
+        tencent: [
+          // 多边形的位置信息
+          new TMap.LatLng(40.041117253378246, 116.2722415837743),
+          new TMap.LatLng(40.03942536171407, 116.2726277820093),
+          new TMap.LatLng(40.03970460886076, 116.27483769345417),
+          new TMap.LatLng(40.041404706498625, 116.27443003983899),
+        ],
+        other: [
+          new TMap.LatLng(40.041649, 116.275059),
+          new TMap.LatLng(40.040828, 116.275237),
+          new TMap.LatLng(40.040934, 116.276079),
+          new TMap.LatLng(40.041041, 116.276229),
+          new TMap.LatLng(40.041095, 116.276481),
+          new TMap.LatLng(40.041058, 116.276787),
+          new TMap.LatLng(40.041144, 116.277613),
+          new TMap.LatLng(40.041965, 116.277404),
+          new TMap.LatLng(40.041879, 116.276653),
+          new TMap.LatLng(40.041776, 116.276293),
+          new TMap.LatLng(40.041752, 116.276073),
+          new TMap.LatLng(40.041768, 116.275864),
+        ],
+      };
+      // 初始化polygon
+      polygon = new TMap.MultiPolygon({
+        id: 'polygon-layer', // 图层id
+        map: map, // 显示多边形图层的底图
+        styles: {
+          // 多边形的相关样式
+          polygon: new TMap.PolygonStyle({
+            color: '#3777FF', // 面填充色
+            showBorder: false, // 是否显示拔起面的边线
+            borderColor: '#00FFFF', // 边线颜色
+          }),
+        },
+        geometries: [
+          {
+            id: 'polygonTen', // 多边形图形数据的标志信息
+            styleId: 'polygon', // 样式id
+            paths: buildingPaths.tencent, // 多边形的位置信息
+            properties: {
+              // 多边形的属性数据
+              title: '腾讯北京总部',
+            },
+          },
+          {
+            id: 'polygonSina', // 多边形图形数据的标志信息
+            styleId: 'polygon', // 样式id
+            paths: buildingPaths.other, // 多边形的位置信息
+            properties: {
+              // 多边形的属性数据
+              title: '其他建筑物',
+            },
+          },
+        ],
+      });
+    }
+    var eventClick = function (res) {
+      var res = res && res.geometry;
+      if (res) {
+        infoDom.style.display = 'block';
+        infoDom.innerHTML = '多边形ID：' + res.id + '; 样式ID：' + res.styleId + '; 自定义字段：' + res.properties.title;
+      }
+    };
+
+    // 绑定点击事件
+    bindBtn.addEventListener('click', bindClick, false);
+    function bindClick() {
+      polygon.on('click', eventClick);
+      bindBtn.removeEventListener('click', bindClick, false); // 绑定polygon点击事件后，解绑绑定按钮（即只绑定一次polygon）
+      unbindBtn.addEventListener('click', unbindClick, false); // 绑定解绑按钮
+    }
+    // 解绑点击事件
+    function unbindClick() {
+      infoDom.style.display = 'none';
+      polygon.off('click', eventClick); // 解绑polygon
+      unbindBtn.removeEventListener('click', unbindClick, false);
+      bindBtn.addEventListener('click', bindClick, false);
+    }
+</script>
+
+<!-- ============================================
+     Demo: 多边形&3D棱柱_多边形选中高亮显示.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>MultiPolygon选中高亮显示</title>
+</head>
+<script charset="utf-8"
+  src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style type="text/css">
+  html,
+  body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #container {
+    width: 100%;
+    height: 100%;
+  }
+
+  #info {
+    display: none;
+    position: absolute;
+    left: 30px;
+    top: 30px;
+    background: #fff;
+    border-radius: 5px;
+    padding: 10px;
+  }
+</style>
+
+<body onload="initMap()">
+  <div id="container"></div>
+  <div id="info">
+
+  </div>
+  <script>
+    var map;
+    function initMap() {
+      var info = document.getElementById("info");
+      var center = new TMap.LatLng( 40.04162653200161, 116.27402993329179);
+
+      //初始化地图
+      map = new TMap.Map("container", {
+        zoom: 16, //设置地图缩放级别
+        center: center, //设置地图中心点坐标
+      });
+
+      // 多边形数据
+      const polygonGeometries = [
+        {
+          "paths": [
+            {
+              "lat": 40.041516,
+              "lng": 116.271655,
+              "height": 0
+            },
+            {
+              "lat": 40.044479,
+              "lng": 116.271063,
+              "height": 0
+            },
+            {
+              "lat": 40.045154,
+              "lng": 116.275173,
+              "height": 0
+            },
+            {
+              "lat": 40.045127,
+              "lng": 116.275351,
+              "height": 0
+            },
+            {
+              "lat": 40.045061,
+              "lng": 116.275474,
+              "height": 0
+            },
+            {
+              "lat": 40.044007,
+              "lng": 116.276271,
+              "height": 0
+            },
+            {
+              "lat": 40.043876,
+              "lng": 116.276264,
+              "height": 0
+            },
+            {
+              "lat": 40.043774,
+              "lng": 116.276204,
+              "height": 0
+            },
+            {
+              "lat": 40.043697,
+              "lng": 116.276093,
+              "height": 0
+            },
+            {
+              "lat": 40.043411,
+              "lng": 116.274514,
+              "height": 0
+            },
+            {
+              "lat": 40.043373,
+              "lng": 116.274436,
+              "height": 0
+            },
+            {
+              "lat": 40.043313,
+              "lng": 116.274408,
+              "height": 0
+            },
+            {
+              "lat": 40.042697,
+              "lng": 116.274427,
+              "height": 0
+            },
+            {
+              "lat": 40.042122,
+              "lng": 116.27462,
+              "height": 0
+            },
+            {
+              "lat": 40.04204,
+              "lng": 116.274607,
+              "height": 0
+            },
+            {
+              "lat": 40.042001,
+              "lng": 116.274544,
+              "height": 0
+            },
+            {
+              "lat": 40.041516,
+              "lng": 116.271655,
+              "height": 0
+            },
+          ],
+        },
+        {
+          "paths": [
+            {
+              "lat": 40.043774,
+              "lng": 116.276204,
+              "height": 0
+            },
+            {
+              "lat": 40.043824,
+              "lng": 116.276332,
+              "height": 0
+            },
+            {
+              "lat": 40.04382,
+              "lng": 116.27648,
+              "height": 0
+            },
+            {
+              "lat": 40.043489,
+              "lng": 116.277156,
+              "height": 0
+            },
+            {
+              "lat": 40.043233,
+              "lng": 116.277385,
+              "height": 0
+            },
+            {
+              "lat": 40.042953,
+              "lng": 116.277482,
+              "height": 0
+            },
+            {
+              "lat": 40.04255,
+              "lng": 116.277556,
+              "height": 0
+            },
+            {
+              "lat": 40.042484,
+              "lng": 116.277524,
+              "height": 0
+            },
+            {
+              "lat": 40.042454,
+              "lng": 116.277449,
+              "height": 0
+            },
+            {
+              "lat": 40.042051,
+              "lng": 116.274762,
+              "height": 0
+            },
+            {
+              "lat": 40.042063,
+              "lng": 116.274677,
+              "height": 0
+            },
+            {
+              "lat": 40.042122,
+              "lng": 116.27462,
+              "height": 0
+            },
+            {
+              "lat": 40.042697,
+              "lng": 116.274427,
+              "height": 0
+            },
+            {
+              "lat": 40.043313,
+              "lng": 116.274408,
+              "height": 0
+            },
+            {
+              "lat": 40.043373,
+              "lng": 116.274436,
+              "height": 0
+            },
+            {
+              "lat": 40.043411,
+              "lng": 116.274514,
+              "height": 0
+            },
+            {
+              "lat": 40.043697,
+              "lng": 116.276093,
+              "height": 0
+            },
+            {
+              "lat": 40.043774,
+              "lng": 116.276204,
+              "height": 0
+            },
+          ],
+        },       
+        {
+          "paths": [
+            {
+              "lat": 40.041904,
+              "lng": 116.274781,
+              "height": 0
+            },
+            {
+              "lat": 40.041939,
+              "lng": 116.274843,
+              "height": 0
+            },
+            {
+              "lat": 40.04233,
+              "lng": 116.27752,
+              "height": 0
+            },
+            {
+              "lat": 40.04231,
+              "lng": 116.277595,
+              "height": 0
+            },
+            {
+              "lat": 40.042262,
+              "lng": 116.277644,
+              "height": 0
+            },
+            {
+              "lat": 40.041085,
+              "lng": 116.277896,
+              "height": 0
+            },
+            {
+              "lat": 40.041028,
+              "lng": 116.277879,
+              "height": 0
+            },
+            {
+              "lat": 40.040999,
+              "lng": 116.277816,
+              "height": 0
+            },
+            {
+              "lat": 40.040641,
+              "lng": 116.275151,
+              "height": 0
+            },
+            {
+              "lat": 40.040655,
+              "lng": 116.275076,
+              "height": 0
+            },
+            {
+              "lat": 40.040701,
+              "lng": 116.275027,
+              "height": 0
+            },
+            {
+              "lat": 40.041847,
+              "lng": 116.274757,
+              "height": 0
+            },
+            {
+              "lat": 40.041904,
+              "lng": 116.274781,
+              "height": 0
+            },
+          ],
+        },
+        {
+          "paths": [
+            {
+              "lat": 40.041231,
+              "lng": 116.271712,
+              "height": 0
+            },
+            {
+              "lat": 40.0413,
+              "lng": 116.271761,
+              "height": 0
+            },
+            {
+              "lat": 40.041347,
+              "lng": 116.271869,
+              "height": 0
+            },
+            {
+              "lat": 40.041821,
+              "lng": 116.27429,
+              "height": 0
+            },
+            {
+              "lat": 40.041793,
+              "lng": 116.274441,
+              "height": 0
+            },
+            {
+              "lat": 40.041701,
+              "lng": 116.274535,
+              "height": 0
+            },
+            {
+              "lat": 40.040443,
+              "lng": 116.274853,
+              "height": 0
+            },
+            {
+              "lat": 40.040906,
+              "lng": 116.27805,
+              "height": 0
+            },
+            {
+              "lat": 40.039506,
+              "lng": 116.278362,
+              "height": 0
+            },
+            {
+              "lat": 40.03863,
+              "lng": 116.272593,
+              "height": 0
+            },
+            {
+              "lat": 40.03869,
+              "lng": 116.27238,
+              "height": 0
+            },
+            {
+              "lat": 40.038957,
+              "lng": 116.272167,
+              "height": 0
+            },
+            {
+              "lat": 40.041231,
+              "lng": 116.271712,
+              "height": 0
+            },
+          ],
+        },
+]
+      
+      let polygonLayer = new TMap.MultiPolygon({
+        map,
+        geometries: polygonGeometries,
+      })
+
+      // 高亮选中图层
+      var highlightLayer = new TMap.MultiPolyline({
+        map,
+        zIndex: 1,
+        styles: {
+          highlight: new TMap.PolylineStyle({
+            'color': 'rgba(188,200,0,0.8)', //填充色
+            'width': 4, // 线宽
+            'borderColor': '#fff', //边线颜色
+            'borderWidth': 1 //边线宽度
+          })
+        }
+      });
+
+      // 高亮区域
+      let highlightGeometry = {
+        id: 'highlightGeo',
+        styleId: 'highlight'
+      }
+
+      polygonLayer.on('hover', e => {
+        if (e.geometry) {
+          // 鼠标选中时高亮区域覆盖
+          highlightGeometry.paths = e.geometry.paths;
+          highlightLayer.updateGeometries([highlightGeometry]);
+        } else {
+          // 鼠标移出时取消高亮区域覆盖
+          highlightLayer.setGeometries([]);
+        }
+      })
+    }
+
+  </script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 多边形&3D棱柱_多边形飞地.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>多边形飞地</title>
+</head>
+<script charset="utf-8"
+    src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    #mapContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body onload="initMap()">
+    <div id="mapContainer"></div>
+</body>
+
+</html>
+<script>
+    function initMap() {
+        var center = new TMap.LatLng(40.035004,116.216400);//设置中心点坐标
+        //初始化地图
+        var map = new TMap.Map('mapContainer', {
+            center: center,
+            zoom: 16
+        });
+        var path = [
+            [ //多边形的位置信息
+                [
+                    new TMap.LatLng(40.035246,116.216367),
+                    new TMap.LatLng(40.034733,116.216539),
+                    new TMap.LatLng(40.034774,116.217440),
+                    new TMap.LatLng(40.034819,116.217987),
+                    new TMap.LatLng(40.034852,116.218315),
+                    new TMap.LatLng(40.035328,116.218197),
+                    new TMap.LatLng(40.035271,116.217295)
+                ],//roll
+                [
+                    new TMap.LatLng(40.034942,116.216695),
+                    new TMap.LatLng(40.034823,116.216711),
+                    new TMap.LatLng(40.034844,116.217279),
+                    new TMap.LatLng(40.034971,116.217247)
+                ]//hole
+            ], [
+                [
+                    new TMap.LatLng(40.035599,116.215204),
+                    new TMap.LatLng(40.035082,116.215429),
+                    new TMap.LatLng(40.035246,116.216341),
+                    new TMap.LatLng(40.035731,116.216094)
+                ]
+            ],
+            [
+                [
+                    new TMap.LatLng(40.034675,116.215627),
+                    new TMap.LatLng(40.034199,116.215686),
+                    new TMap.LatLng(40.034277,116.216620),
+                    new TMap.LatLng(40.034770,116.216539)
+                ]
+
+            ]
+        ];
+        //初始化polygon
+        var polygon = new TMap.MultiPolygon({
+            id: 'polygon-layer', //图层id
+            map: map, //显示多边形图层的底图
+            styles: { //多边形的相关样式
+                'polygon': new TMap.PolygonStyle({
+                    'color': 'rgba(0,125,255,0.7)', //面填充色
+                    'showBorder': false, //是否显示拔起面的边线
+                    'borderColor': '#00FFFF' //边线颜色
+                })
+            },
+            geometries: [
+                {
+                    'id': 'polygon', //多边形图形数据的标志信息
+                    'styleId': 'polygon', //样式id
+                    'paths': path, //多边形的位置信息
+                    'properties': { //多边形的属性数据
+                        'title': 'polygon'
+                    }
+                }
+            ]
+        });
+    }
+</script>
+
+<!-- ============================================
+     Demo: 多边形&3D棱柱_带飞地的区域实现高亮.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>飞地区域实现高亮</title>
+</head>
+<script charset="utf-8"
+    src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=service"></script>
+<style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+    }
+
+    #container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body onload="initMap()">
+    <div id="container"></div>
+</body>
+<script>
+    var map;
+    var district;
+    function initMap() {
+        // 初始化地图
+        map = new TMap.Map('container', {
+            zoom: 8,
+            center: new TMap.LatLng(32.87441813772688, 119.32388989226047), // 设置地图中心点坐标
+            rotation: 0, // 旋转角度，
+            mapStyleId: 'style1',
+            baseMap: [
+                { type: 'vector', features: ['base'] },
+                {
+                    type: 'traffic',
+                    opacity: 1,
+                },
+            ],
+            renderOptions: {
+                enableBloom: true, // 是否启用泛光效果 注：为true才会有效果
+            },
+        });
+        highlight();
+    }
+
+    function highlight() {
+        // 服务类库文档地址：https://lbs.qq.com/webApi/javascriptGL/glDoc/glDocService
+        district = new TMap.service.District({
+            // 新建一个行政区划类
+            polygon: 2, // 返回行政区划边界的类型
+        });
+        // 关键字搜索行政区划，110000 = 北京行政区划代码
+        district.search({ keyword: 320000 }).then((result) => {
+            if (!result && !result.result) return;
+            console.log(result)
+            // 获取省市区列表及其边界信息
+            var paths = result.result[0][0].polygon;
+            // 外边界
+            var outPaths = [
+                new TMap.LatLng(30, 125),
+                new TMap.LatLng(36, 125),
+                new TMap.LatLng(36, 114),
+                new TMap.LatLng(30, 114),
+            ]
+
+            //  设置地图边界范围
+            let boundary = new TMap.LatLngBounds(outPaths[3], outPaths[1]);
+            map.setBoundary(boundary);
+            
+            // 绘制高亮区域
+            new TMap.MultiPolygon({
+                map: map,
+                styles: {
+                    outPoly: new TMap.PolygonStyle({
+                        color: '#000',
+                        showBorder: false,
+                    }),
+                },
+                geometries: [
+                    {
+                        styleId: 'outPoly', // 样式id
+                        paths: [outPaths, ...paths],
+                    },
+                ],
+            });
+            let polylineGeos = paths.map((path) => {
+                path.push(path[0]); // 路线首位相连
+                return {
+                    styleId: 'polyline',
+                    paths: paths,
+                }
+            })
+            new TMap.MultiPolyline({
+                map: map,
+                styles: {
+                    polyline: new TMap.PolylineStyle({
+                        color: '#017cf7', // 线条填充色，
+                        width: 8,
+                        lineCap: 'round',
+                        enableBloom: true, // 是否启用泛光  注：为true才会有效果
+                    }),
+                },
+                geometries: polylineGeos,
+            });
+        });
+    }
+</script>
+
+</html>
+
+<!-- ============================================
+     Demo: 多边形&3D棱柱_环形(带洞)多边形.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>环形(带洞)多边形</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    #mapContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+</style>
+
+<body onload="initMap()">
+    <div id="mapContainer"></div>
+</body>
+
+</html>
+<script>
+    function initMap() {
+      var center = new TMap.LatLng(40.040452, 116.273486); // 设置中心点坐标
+      // 初始化地图
+      var map = new TMap.Map('mapContainer', {
+        center: center,
+        zoom: 16,
+      });
+      var path = [
+        // 环形多边形的位置信息
+        [
+          new TMap.LatLng(40.041117253378246, 116.2722415837743),
+          new TMap.LatLng(40.03942536171407, 116.2726277820093),
+          new TMap.LatLng(40.03970460886076, 116.27483769345417),
+          new TMap.LatLng(40.041404706498625, 116.27443003983899),
+        ],
+        [
+          new TMap.LatLng(40.040852, 116.273756),
+          new TMap.LatLng(40.040458, 116.273804),
+          new TMap.LatLng(40.040544, 116.274464),
+          new TMap.LatLng(40.040926, 116.274282),
+        ],
+      ];
+      // 初始化polygon
+      var polygon = new TMap.MultiPolygon({
+        id: 'polygon-layer', // 图层id
+        map: map, // 显示多边形图层的底图
+        styles: {
+          // 多边形的相关样式
+          polygon: new TMap.PolygonStyle({
+            color: '#00F0CC', // 面填充色
+            showBorder: false, // 是否显示拔起面的边线
+            borderColor: '#999', // 边线颜色
+          }),
+        },
+        geometries: [
+          {
+            id: 'polygon', // 多边形图形数据的标志信息
+            styleId: 'polygon', // 样式id
+            paths: path, // 多边形的位置信息
+            properties: {
+              // 多边形的属性数据
+              title: 'polygon',
+            },
+          },
+        ],
+      });
+    }
+</script>
+
+<!-- ============================================
+     Demo: 多边形&3D棱柱_简单圆形.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>简单圆形</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style type="text/css">
+  html,
+  body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+  }
+  #container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<body>
+  <div id="container"></div>
+  <script type="text/javascript">
+    var center = new TMap.LatLng(39.984104, 116.307503);
+    //初始化地图
+    var map = new TMap.Map("container", {
+      zoom: 12, //设置地图缩放级别
+      center: center //设置地图中心点坐标
+    });
+
+    var circle = new TMap.MultiCircle({ 
+      map,
+      styles: { // 设置圆形样式
+        'circle': new TMap.CircleStyle({
+          'color': 'rgba(41,91,255,0.16)',
+          'showBorder': true,
+          'borderColor': 'rgba(41,91,255,1)',
+          'borderWidth': 2,
+        }),
+      },
+      geometries: [{
+        styleId: 'circle',
+        center: center,
+        radius: 6500,
+      }],
+    });
+  </script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 多边形&3D棱柱_简单多边形.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>简单多边形</title>
+  </head>
+  <script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+  <style>
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      overflow: hidden;
+    }
+
+    #mapContainer {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+  </style>
+
+  <body onload="initMap()">
+    <div id="mapContainer"></div>
+  </body>
+</html>
+<script>
+  function initMap() {
+    var center = new TMap.LatLng(40.040452, 116.273486); // 设置中心点坐标
+    // 初始化地图
+    var map = new TMap.Map('mapContainer', {
+      center: center,
+      zoom: 16,
+    });
+    var path = [
+      // 多边形的位置信息
+      new TMap.LatLng(40.041117253378246, 116.2722415837743),
+      new TMap.LatLng(40.03942536171407, 116.2726277820093),
+      new TMap.LatLng(40.03970460886076, 116.27483769345417),
+      new TMap.LatLng(40.041404706498625, 116.27443003983899),
+    ];
+    // 初始化polygon
+    var polygon = new TMap.MultiPolygon({
+      id: 'polygon-layer', // 图层id
+      map: map, // 显示多边形图层的底图
+      styles: {
+        // 多边形的相关样式
+        polygon: new TMap.PolygonStyle({
+          color: '#3777FF', // 面填充色
+          showBorder: false, // 是否显示拔起面的边线
+          borderColor: '#00FFFF', // 边线颜色
+        }),
+      },
+      geometries: [
+        {
+          id: 'polygon', // 多边形图形数据的标志信息
+          styleId: 'polygon', // 样式id
+          paths: path, // 多边形的位置信息
+          properties: {
+            // 多边形的属性数据
+            title: 'polygon',
+          },
+        },
+      ],
+    });
+  }
+</script>
+
+
+<!-- ============================================
+     Demo: 多边形&3D棱柱_自定义多边形样式.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>自定义多边形样式</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style>
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    #mapContainer {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    #buttonContainer {
+        position: absolute;
+        left: 30px;
+        top: 30px;
+        z-index: 9999;
+    }
+
+    #buttonContainer input {
+        background: #fff;
+        padding: 10px;
+        width: 120xp;
+        outline-style: none;
+        margin-right: 10px;
+        border-radius: 10px;
+    }
+</style>
+
+<body onload="initMap()">
+    <div id="buttonContainer">
+        <input type="button" onclick="setStyle('styleOne')" value="设置样式1">
+        <input type="button" onclick="setStyle('styleTwo')" value="设置样式2">
+    </div>
+    <div id="mapContainer"></div>
+</body>
+
+</html>
+<script>
+    var map = null;
+    var polygon = null;
+    function initMap() {
+      var center = new TMap.LatLng(40.040452, 116.273486); // 设置中心点坐标
+      // 初始化地图
+      map = new TMap.Map('mapContainer', {
+        center: center,
+        zoom: 16,
+      });
+      var path = [
+        // 多边形的位置信息
+        new TMap.LatLng(40.041117253378246, 116.2722415837743),
+        new TMap.LatLng(40.03942536171407, 116.2726277820093),
+        new TMap.LatLng(40.03970460886076, 116.27483769345417),
+        new TMap.LatLng(40.041404706498625, 116.27443003983899),
+      ];
+      // 初始化polygon
+      polygon = new TMap.MultiPolygon({
+        id: 'polygon-layer', // 图层id
+        map: map, // 显示多边形图层的底图
+        styles: {
+          // 多边形的相关样式
+          polygon: new TMap.PolygonStyle({
+            color: 'rgba(0,125,255,0.5)', // 面填充色
+            showBorder: false, // 是否显示拔起面的边线
+            // 'borderWidth':20,
+            borderColor: '#FF0000', // 边线颜色
+          }),
+        },
+        geometries: [
+          {
+            id: 'polygon', // 多边形图形数据的标志信息
+            styleId: 'polygon', // 样式id
+            paths: path, // 多边形的位置信息
+            properties: {
+              // 多边形的属性数据
+              title: 'polygon',
+            },
+          },
+        ],
+      });
+    }
+    function setStyle(type) {
+      switch (type) {
+        case 'styleOne':
+          polygon.setStyles({
+            polygon: new TMap.PolygonStyle({
+              color: 'rgba(0,125,255,0.5)',
+              showBorder: false,
+              borderColor: '#999',
+            }),
+          });
+          break;
+        case 'styleTwo':
+          polygon.setStyles({
+            polygon: new TMap.PolygonStyle({
+              color: '#FF00FF',
+              showBorder: false,
+              borderColor: 'rgba(0,255,0,0.4)',
+            }),
+          });
+          break;
+        default:
+      }
+    }
+</script>
+
+<!-- ============================================
+     Demo: 多边形&3D棱柱_自定义边线样式.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>自定义边线样式</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style type="text/css">
+  html,
+  body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    overflow: hidden;
+  }
+  #container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<body onload="initMap()">
+  <div id="container"></div>
+  <script>
+    function initMap() {
+      var center = new TMap.LatLng(39.98193773845799, 116.31178379058838);
+      //初始化地图
+      var map = new TMap.Map("container", {
+        zoom: 16, // 设置地图缩放级别
+        center: center // 设置地图中心点坐标
+      });
+
+      var circle = new TMap.MultiCircle({ 
+        map,
+        styles: { // 设置圆形样式
+          'circle': new TMap.CircleStyle({
+            'color': 'rgba(41,91,255,0.16)', // 面填充
+            'showBorder': true, // 是否显示边线
+            'borderColor': 'rgba(41,91,255,1)', // 边线颜色
+            'borderWidth': 2, // 边线宽度
+          }),
+        },
+        geometries: [{
+          styleId: 'circle',
+          center: center,
+          radius: 340,
+        }],
+      });
+
+      var polygonPath = [
+        new TMap.LatLng(39.98476568290943, 116.30566835403442),
+        new TMap.LatLng(39.97894525117546, 116.30614042282104),
+        new TMap.LatLng(39.978813710266024, 116.31120443344116),
+        new TMap.LatLng(39.97886303813672, 116.3168478012085),
+        new TMap.LatLng(39.985242475965705, 116.31631135940552),
+      ];
+      var polygon = new TMap.MultiPolygon({
+        map, // 显示多边形图层的底图
+        styles: { // 多边形的相关样式
+          'polygon': new TMap.PolygonStyle({
+            'color': 'rgba(41,91,255,0.16)', // 面填充色
+            'showBorder': true, // 是否显示拔起面的边线
+            'borderColor': 'rgba(41,91,255,1)', // 边线颜色
+            'borderWidth': 3, // 边线宽度
+            'borderDashArray': [5, 5] // 虚线数组
+          }),
+        },
+        geometries: [{
+          id: 'polygon', // 多边形图形数据的标志信息
+          styleId: 'polygon', // 样式id
+          paths: polygonPath, // 多边形的位置信息
+        }],
+      });
+    }
+  
+  </script>
+</body>
+
+</html>
+
+</body>
+</html>

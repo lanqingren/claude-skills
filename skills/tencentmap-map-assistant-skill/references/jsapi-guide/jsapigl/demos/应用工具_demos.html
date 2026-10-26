@@ -1,0 +1,965 @@
+<!DOCTYPE html>
+<!--
+  合并演示文件 - 类别: 应用工具
+  包含 6 个演示: 应用工具_开关编辑器键盘事件.html, 应用工具_测量工具.html, 应用工具_绘制几何图形.html, 应用工具_编辑几何图形.html, 应用工具_编辑器的禁用和启用.html, 应用工具_设置编辑点为GL模式.html
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>应用工具 - 合并演示</title>
+</head>
+<body>
+
+<!-- ============================================
+     Demo: 应用工具_开关编辑器键盘事件.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>开关编辑器键盘事件</title>
+</head>
+<script charset="utf-8"
+    src="https://map.qq.com/api/gljs?libraries=tools&v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #container {
+        width: 100%;
+        height: 80%;
+        position: relative;
+    }
+
+    .btnContainer {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        z-index: 10000;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .btnContainer button {
+        padding: 10px 14px;
+        box-sizing: border-box;
+        border: none;
+        background-color: #3876ff;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 14px;
+        line-height: 14px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<body onload="initMap()">
+    <div id="container"></div>
+    <div class="btnContainer">
+        <button id="btn1" onclick="enableKeyBoard('Delete')">关闭默认的Delete事件</button>
+        <button id="btn2" onclick="enableKeyBoard('Ctrl')">关闭默认的Ctrl事件</button>
+        <button id="btn3" onclick="enableKeyBoard('Esc')">关闭默认的Esc事件</button>
+    </div>
+    <div>
+        单选：鼠标左键点击图形<br />
+        多选：按下ctrl键后点击多个图形， 禁用后将无法通过Ctrl键多选<br />
+        删除：选中图形后按下delete键可删除图形，禁用后将无法通过delete键删除<br />
+        中断：按下esc键可中断当前操作，点选的图形将取消选中，编辑过程将中断，禁用后将无法通过esc键中断
+    </div>
+    <script type="text/javascript">
+        var map, editor;
+        const btn1 = document.getElementById('btn1')
+        const btn2 = document.getElementById('btn2')
+        const btn3 = document.getElementById('btn3')
+        function enableKeyBoard(target) {
+          	// 文档地址：https://lbs.qq.com/webApi/javascriptGL/glDoc/glDocEditor
+            if (target === 'Delete' || target === 'Ctrl' || target === 'Esc') {
+                let flag = !editor[`getKeyboard${target}Enable`]();
+                editor[`setKeyboard${target}Enable`](flag);
+
+                // 更新按钮文字
+                const btnMap = {
+                    'Delete': btn1,
+                    'Ctrl': btn2,
+                    'Esc': btn3
+                };
+                btnMap[target].innerText = flag ?
+                    `关闭默认的${target}事件` :
+                    `开启默认的${target}事件`;
+            }
+        }
+        function initMap() {
+            // 初始化地图
+            map = new TMap.Map("container", {
+                zoom: 16, // 设置地图缩放级别
+                center: new TMap.LatLng(40.04162653200161, 116.27402993329179) // 设置地图中心点坐标
+            });
+
+            const polygonGeometries = [
+                {
+                    "paths": [
+                        new TMap.LatLng(40.041516, 116.271655),
+                        new TMap.LatLng(40.044479, 116.271063),
+                        new TMap.LatLng(40.045154, 116.275173),
+                        new TMap.LatLng(40.045127, 116.275351),
+                        new TMap.LatLng(40.045061, 116.275474),
+                        new TMap.LatLng(40.044007, 116.276271),
+                        new TMap.LatLng(40.043876, 116.276264),
+                        new TMap.LatLng(40.043774, 116.276204),
+                        new TMap.LatLng(40.043697, 116.276093),
+                        new TMap.LatLng(40.043411, 116.274514),
+                        new TMap.LatLng(40.043373, 116.274436),
+                        new TMap.LatLng(40.043313, 116.274408),
+                        new TMap.LatLng(40.042697, 116.274427),
+                        new TMap.LatLng(40.042122, 116.27462),
+                        new TMap.LatLng(40.04204, 116.274607),
+                        new TMap.LatLng(40.042001, 116.274544),
+                        new TMap.LatLng(40.041516, 116.271655),
+                    ],
+                },
+                {
+                    "paths": [
+                        new TMap.LatLng(40.043774, 116.276204),
+                        new TMap.LatLng(40.043824, 116.276332),
+                        new TMap.LatLng(40.04382, 116.27648),
+                        new TMap.LatLng(40.043489, 116.277156),
+                        new TMap.LatLng(40.043233, 116.277385),
+                        new TMap.LatLng(40.042953, 116.277482),
+                        new TMap.LatLng(40.04255, 116.277556),
+                        new TMap.LatLng(40.042484, 116.277524),
+                        new TMap.LatLng(40.042454, 116.277449),
+                        new TMap.LatLng(40.042051, 116.274762),
+                        new TMap.LatLng(40.042063, 116.274677),
+                        new TMap.LatLng(40.042122, 116.27462),
+                        new TMap.LatLng(40.042697, 116.274427),
+                        new TMap.LatLng(40.043313, 116.274408),
+                        new TMap.LatLng(40.043373, 116.274436),
+                        new TMap.LatLng(40.043411, 116.274514),
+                        new TMap.LatLng(40.043697, 116.276093),
+                        new TMap.LatLng(40.043774, 116.276204),
+                    ],
+                },
+                {
+                    "paths": [
+                        new TMap.LatLng(40.041904, 116.274781),
+                        new TMap.LatLng(40.041939, 116.274843),
+                        new TMap.LatLng(40.04233, 116.27752),
+                        new TMap.LatLng(40.04231, 116.277595),
+                        new TMap.LatLng(40.042262, 116.277644),
+                        new TMap.LatLng(40.041085, 116.277896),
+                        new TMap.LatLng(40.041028, 116.277879),
+                        new TMap.LatLng(40.040999, 116.277816),
+                        new TMap.LatLng(40.040641, 116.275151),
+                        new TMap.LatLng(40.040655, 116.275076),
+                        new TMap.LatLng(40.040701, 116.275027),
+                        new TMap.LatLng(40.041847, 116.274757),
+                        new TMap.LatLng(40.041904, 116.274781),
+                    ],
+                },
+                {
+                    "paths": [
+                        new TMap.LatLng(40.041231, 116.271712),
+                        new TMap.LatLng(40.0413, 116.271761),
+                        new TMap.LatLng(40.041347, 116.271869),
+                        new TMap.LatLng(40.041821, 116.27429),
+                        new TMap.LatLng(40.041793, 116.274441),
+                        new TMap.LatLng(40.041701, 116.274535),
+                        new TMap.LatLng(40.040443, 116.274853),
+                        new TMap.LatLng(40.040906, 116.27805),
+                        new TMap.LatLng(40.039506, 116.278362),
+                        new TMap.LatLng(40.03863, 116.272593),
+                        new TMap.LatLng(40.03869, 116.27238),
+                        new TMap.LatLng(40.038957, 116.272167),
+                        new TMap.LatLng(40.041231, 116.271712),
+                    ],
+                }]
+                // 初始化几何图形及编辑器
+            editor = new TMap.tools.GeometryEditor({
+                map, // 编辑器绑定的地图对象
+                overlayList: [ // 可编辑图层
+                    {
+                        overlay: new TMap.MultiPolygon({
+                            map,
+                            styles: {
+                                highlight: new TMap.PolygonStyle({
+                                    color: 'rgba(255, 255, 0, 0.6)'
+                                })
+                            },
+                            geometries: polygonGeometries
+                        }),
+                        id: 'polygon',
+                        selectedStyleId: 'highlight'
+                    }
+                ],
+                actionMode: TMap.tools.constants.EDITOR_ACTION.INTERACT, // 编辑器的工作模式
+                activeOverlayId: 'polygon', // 激活图层
+                selectable: true, // 开启点选功能
+                snappable: true // 开启吸附
+            });
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 应用工具_测量工具.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>测量工具</title>
+  </head>
+  <script charset="utf-8" src="https://map.qq.com/api/gljs?libraries=tools&v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+  <style type="text/css">
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #container {
+      width: 100%;
+      height: 100%;
+    }
+
+    .toolControl {
+      width: 100px;
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      z-index: 1001;
+    }
+
+    .toolControl div {
+      width: 60px;
+      height: 30px;
+      line-height: 30px;
+      font-size: 18px;
+      padding: 4px;
+      border-radius: 3px;
+      text-align: center;
+      margin: 2px;
+      cursor: pointer;
+    }
+
+    .toolControl .active {
+      background-color: #548efd;
+      color: #fff;
+    }
+
+    .toolControl .inactive {
+      background-color: #ffffff;
+    }
+
+    #distance,
+    #area {
+      width: 160px;
+      font-size: 16px;
+      margin-top: 20px;
+    }
+  </style>
+
+  <body onload="initMap()">
+    <div id="container"></div>
+    <div class="toolControl">
+      <div onclick="enable(true)" id="enable" class="active">启用</div>
+      <div onclick="enable(false)" id="disable" class="inactive">禁用</div>
+      <div onclick="measure('distance')" id="distance" class="inactive">点击这里开始距离测量</div>
+      <div onclick="measure('area')" id="area" class="inactive">点击这里开始面积测量</div>
+    </div>
+    <script type="text/javascript">
+      var map; // 地图
+      var measureTool; // 测量工具
+      var enableButton = document.getElementById('enable'); // 启用
+      var disableButton = document.getElementById('disable'); // 禁用
+      var distanceButton = document.getElementById('distance'); // 距离测量
+      var areaButton = document.getElementById('area'); // 面积测量
+
+      function initMap() {
+        // 初始化地图
+        map = new TMap.Map('container', {
+          zoom: 12, // 设置地图缩放级别
+          center: new TMap.LatLng(39.984104, 116.307503), // 设置地图中心点坐标
+        });
+
+        // 创建测量工具
+
+        measureTool = new TMap.tools.MeasureTool({
+          // TMap.tools.MeasureTool文档地址：https://lbs.qq.com/webApi/javascriptGL/glDoc/glDocEditor#5F
+          map: map,
+        });
+      }
+      function measure(type) {
+        if (disableButton.className === 'active') {
+          // 禁用的情况下提示并return
+          alert('请启用测量工具');
+          return;
+        }
+        enableButton.className = 'active';
+
+        // 区分距离或面积测量
+        switch (type) {
+          case 'distance':
+            // 距离测量
+            distanceButton.className = 'active';
+            distanceButton.innerText = '点击这里测量结束';
+            measureTool.measureDistance().then(() => {
+              enableButton.className = 'active';
+              distanceButton.className = 'inactive';
+              distanceButton.innerText = '点击这里开始距离测量';
+            });
+            break;
+          case 'area':
+            // 面积测量
+            areaButton.className = 'active';
+            areaButton.innerText = '点击这里测量结束';
+            measureTool.measureArea().then(() => {
+              enableButton.className = 'active';
+              areaButton.className = 'inactive';
+              areaButton.innerText = '点击这里开始面积测量';
+            });
+            break;
+        }
+      }
+
+      function enable(on) {
+        if (on) {
+          measureTool.enable();
+          enableButton.className = 'active';
+          disableButton.className = 'inactive';
+        } else {
+          // 禁用重置样式
+          measureTool.disable();
+          enableButton.className = 'inactive';
+          disableButton.className = 'active';
+          distanceButton.className = 'inactive';
+          areaButton.className = 'inactive';
+        }
+      }
+    </script>
+  </body>
+</html>
+
+
+<!-- ============================================
+     Demo: 应用工具_绘制几何图形.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>绘制几何图形</title>
+  </head>
+  <script charset="utf-8" src="https://map.qq.com/api/gljs?libraries=tools&v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+  <style type="text/css">
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    #container {
+      width: 100%;
+      height: 80%;
+    }
+
+    #toolControl {
+      position: absolute;
+      top: 10px;
+      left: 0px;
+      right: 0px;
+      margin: auto;
+      width: 252px;
+      z-index: 1001;
+    }
+
+    .toolItem {
+      width: 30px;
+      height: 30px;
+      float: left;
+      margin: 1px;
+      padding: 4px;
+      border-radius: 3px;
+      background-size: 30px 30px;
+      background-position: 4px 4px;
+      background-repeat: no-repeat;
+      box-shadow: 0 1px 2px 0 #e4e7ef;
+      background-color: #ffffff;
+      border: 1px solid #ffffff;
+    }
+
+    .toolItem:hover {
+      border-color: #789cff;
+    }
+
+    .active {
+      border-color: #d5dff2;
+      background-color: #d5dff2;
+    }
+
+    #marker {
+      background-image: url('https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/marker_editor.png');
+    }
+
+    #polyline {
+      background-image: url('https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/polyline.png');
+    }
+
+    #polygon {
+      background-image: url('https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/polygon.png');
+    }
+
+    #circle {
+      background-image: url('https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/circle.png');
+    }
+
+    #rectangle {
+      background-image: url('https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/rectangle.png');
+    }
+
+    #ellipse {
+      background-image: url('https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/ellipse.png');
+    }
+  </style>
+
+  <body onload="initMap()">
+    <div id="container"></div>
+    <div id="toolControl">
+      <div class="toolItem active" id="marker" title="点标记"></div>
+      <div class="toolItem" id="polyline" title="折线"></div>
+      <div class="toolItem" id="polygon" title="多边形"></div>
+      <div class="toolItem" id="circle" title="圆形"></div>
+      <div class="toolItem" id="rectangle" title="矩形"></div>
+      <div class="toolItem" id="ellipse" title="椭圆"></div>
+    </div>
+    <div>
+      绘制：鼠标左键点击及移动即可绘制图形
+      <br />
+      结束绘制：鼠标左键双击即可结束绘制折线、多边形会自动闭合；圆形、矩形、椭圆单击即可结束
+      <br />
+      中断：绘制过程中按下esc键可中断该过程
+      <br />
+      撤销：使用ctrl+z或鼠标右键可以在绘制线和多边形时撤销上个绘制点
+    </div>
+    <script type="text/javascript">
+      var map; // 地图
+      var editor; // 编辑器
+      var activeType = 'marker'; // 激活的图形编辑类型
+
+      // 切换激活图层
+      document.getElementById('toolControl').addEventListener('click', (e) => {
+        var id = e.target.id;
+        if (id !== 'toolControl') {
+          document.getElementById(activeType).className = 'toolItem';
+          document.getElementById(id).className = 'toolItem active';
+          activeType = id;
+
+          editor.setActiveOverlay(id);
+        }
+      });
+
+      function initMap() {
+        // 初始化地图
+        map = new TMap.Map('container', {
+          zoom: 12, // 设置地图缩放级别
+          center: new TMap.LatLng(39.984104, 116.307503), // 设置地图中心点坐标
+        });
+
+        // 初始化几何图形及编辑器
+        var marker = new TMap.MultiMarker({
+          map: map,
+        });
+        var polyline = new TMap.MultiPolyline({
+          map: map,
+        });
+        var polygon = new TMap.MultiPolygon({
+          map: map,
+        });
+        var circle = new TMap.MultiCircle({
+          map: map,
+        });
+        var rectangle = new TMap.MultiRectangle({
+          map: map,
+        });
+        var ellipse = new TMap.MultiEllipse({
+          map: map,
+        });
+        editor = new TMap.tools.GeometryEditor({
+          // TMap.tools.GeometryEditor 文档地址：https://lbs.qq.com/webApi/javascriptGL/glDoc/glDocEditor
+          map: map, // 编辑器绑定的地图对象
+          overlayList: [
+            // 可编辑图层 文档地址：https://lbs.qq.com/webApi/javascriptGL/glDoc/glDocEditor#4
+            {
+              overlay: marker,
+              id: 'marker',
+            },
+            {
+              overlay: polyline,
+              id: 'polyline',
+            },
+            {
+              overlay: polygon,
+              id: 'polygon',
+            },
+            {
+              overlay: circle,
+              id: 'circle',
+            },
+            {
+              overlay: rectangle,
+              id: 'rectangle',
+            },
+            {
+              overlay: ellipse,
+              id: 'ellipse',
+            },
+          ],
+          actionMode: TMap.tools.constants.EDITOR_ACTION.DRAW, // 编辑器的工作模式
+          activeOverlayId: 'marker', // 激活图层
+          snappable: true, // 开启吸附
+        });
+        // 监听绘制结束事件，获取绘制几何图形
+        editor.on('draw_complete', (geometry) => {
+          // 判断当前处于编辑状态的图层id是否是overlayList中id为rectangle（矩形）图层
+          // 判断当前处于编辑状态的图层id是否是overlayList中id为rectangle（矩形）图层
+          var id = geometry.id;
+          if (editor.getActiveOverlay().id === 'rectangle') {
+            // 获取矩形顶点坐标
+            var geo = rectangle.geometries.filter(function (item) {
+              return item.id === id;
+            });
+            console.log('绘制的矩形定位的坐标：', geo[0].paths);
+          }
+
+          if (editor.getActiveOverlay().id === 'polygon') {
+            // 获取多边形顶点坐标
+            var geo = polygon.geometries.filter(function (item) {
+              return item.id === id;
+            });
+            console.log('绘制的多边形坐标：', geo[0].paths);
+          }
+        });
+      }
+    </script>
+  </body>
+</html>
+
+
+<!-- ============================================
+     Demo: 应用工具_编辑几何图形.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>编辑几何图形</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?libraries=tools&v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #container {
+        width: 100%;
+        height: 80%;
+		position: relative;
+    }
+	#toolControl {
+		position: absolute;
+		top: 10px;
+		left: 0px;
+		right: 0px;
+		margin: auto;
+		width: 126px;
+		z-index: 1001;
+	}
+	.toolItem {
+		width: 30px;
+		height: 30px;
+		float: left;
+		margin: 1px;
+		padding: 4px;
+		border-radius: 3px;
+		background-size: 30px 30px;
+		background-position: 4px 4px;
+		background-repeat: no-repeat;
+		box-shadow: 0 1px 2px 0 #E4E7EF;
+		background-color: #ffffff;
+		border: 1px solid #ffffff;
+	}
+	.toolItem:hover {
+		border-color: #789CFF;
+	}
+	.active {
+		border-color: #D5DFF2;
+		background-color: #D5DFF2;
+	}
+
+	#delete {
+		background-image: url('https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/delete.png');
+	}
+	#split {
+		background-image: url('https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/split.png');
+	}
+	#union {
+		background-image: url('https://mapapi.qq.com/web/lbs/javascriptGL/demo/img/union.png');
+	}
+</style>
+
+<body onload="initMap()">
+	<div id="container"></div>
+	<div id="toolControl">
+		<div class="toolItem" id="delete" onclick="editor.delete();" title="删除"></div>
+		<div class="toolItem" id="split" onclick="editor.split();" title="拆分"></div>
+		<div class="toolItem" id="union" onclick="editor.union();" title="合并"></div>
+	</div>
+	<div>
+		单选：鼠标左键点击图形<br/>
+		多选：按下ctrl键后点击多个图形<br/>
+		删除：选中图形后按下delete键或点击删除按钮可删除图形<br/>
+		编辑：选中图形后出现编辑点，拖动编辑点可移动顶点位置，双击实心编辑点可删除顶点<br/>
+		拆分：选中单个多边形后可绘制拆分线，拆分线绘制完成后自动进行拆分<br/>
+		合并：选中多个相邻多边形后可进行合并，飞地形式的多边形不支持合并<br/>
+		中断：按下esc键可中断当前操作，点选的图形将取消选中，编辑过程将中断
+	</div>
+	<script type="text/javascript">
+		var map, editor;
+
+        function initMap() {
+            // 初始化地图
+            map = new TMap.Map("container", {
+                zoom: 17, // 设置地图缩放级别
+                center: new TMap.LatLng(40.04019000341765, 116.27446815226199) // 设置地图中心点坐标
+			});
+
+			var simplePath = [
+				new TMap.LatLng(40.04051164600918, 116.27488518619089),
+				new TMap.LatLng(40.040943635857445, 116.27804611629756),
+				new TMap.LatLng(40.03951759379146, 116.2783762087081),
+				new TMap.LatLng(40.03891287066983, 116.2752049655744)
+			];
+			var holeyPath = [
+				[
+					new TMap.LatLng(40.0415122389407, 116.27144427159294),
+					new TMap.LatLng(40.03854281391625, 116.27218697924695),
+					new TMap.LatLng(40.03891287066983, 116.2752049655744),
+					new TMap.LatLng(40.04191838125587, 116.27460372613496)
+				],
+				[
+					new TMap.LatLng(40.04108804322408, 116.27230486920075),
+					new TMap.LatLng(40.039472465232336, 116.27267032855252),
+					new TMap.LatLng(40.03972518377873, 116.2748159283218),
+					new TMap.LatLng(40.04137685760844, 116.2744386798397)
+				]
+			];
+			
+			// 初始化几何图形及编辑器
+			editor = new TMap.tools.GeometryEditor({
+				map, // 编辑器绑定的地图对象
+				overlayList: [ // 可编辑图层
+					{
+						overlay: new TMap.MultiPolygon({
+							map,
+							styles: {
+								highlight: new TMap.PolygonStyle({
+									color: 'rgba(255, 255, 0, 0.6)'
+								})
+							},
+							geometries: [
+								{
+									paths: simplePath
+								},
+								{
+									paths: holeyPath
+								},
+							]
+						}),
+						id: 'polygon',
+						selectedStyleId: 'highlight'
+					}
+				],
+				actionMode: TMap.tools.constants.EDITOR_ACTION.INTERACT, // 编辑器的工作模式
+				activeOverlayId: 'polygon', // 激活图层
+				selectable: true, // 开启点选功能
+				snappable: true // 开启吸附
+			});
+
+			// 监听删除、修改、拆分、合并完成事件
+			let evtList = ['delete', 'adjust', 'split', 'union'];
+			evtList.forEach(evtName => {
+				editor.on(evtName + '_complete', evtResult => {
+					console.log(evtName, evtResult);
+				});
+			});
+
+			// 监听拆分失败事件，获取拆分失败原因
+			editor.on('split_fail', (res) => { 
+				alert(res.message);
+			});
+			// 监听合并失败事件，获取合并失败原因
+			editor.on('union_fail', (res) => { 
+				alert(res.message);
+			});
+		}
+    </script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 应用工具_编辑器的禁用和启用.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>编辑器的禁用和启用</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?libraries=tools&v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77"></script>
+<style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+    }
+
+    #container {
+        width: 100%;
+        height: 80%;
+		position: relative;
+    }
+	#toolControl {
+		position: absolute;
+		top: 10px;
+		left: 0px;
+		right: 0px;
+		margin: auto;
+		width: 120px;
+		text-align: center;
+		z-index: 1001;
+	}
+</style>
+
+<body onload="initMap()">
+	<div id="container"></div>
+	<div id="toolControl">
+		<button onclick="editor.enable();">启用</button>
+		<button onclick="editor.disable();">禁用</button>
+	</div>
+	<div>
+		编辑器启用后地图进入2D视图模式，无法调整俯仰角及旋转角度<br/>
+		编辑器禁用后地图恢复原状，无法进行绘制和交互。
+	</div>
+	<script type="text/javascript">
+		var map, editor;
+
+        function initMap() {
+            // 初始化地图
+            map = new TMap.Map("container", {
+                zoom: 17, // 设置地图缩放级别
+                center: new TMap.LatLng(40.04019000341765, 116.27446815226199) // 设置地图中心点坐标
+			});
+
+			var simplePath = [
+				new TMap.LatLng(40.04051164600918, 116.27488518619089),
+				new TMap.LatLng(40.040943635857445, 116.27804611629756),
+				new TMap.LatLng(40.03951759379146, 116.2783762087081),
+				new TMap.LatLng(40.03891287066983, 116.2752049655744)
+			];
+
+			// 初始化几何图形及编辑器
+			editor = new TMap.tools.GeometryEditor({
+				map, // 编辑器绑定的地图对象
+				overlayList: [ // 可编辑图层
+					{
+						overlay: new TMap.MultiPolygon({
+							map,
+							styles: {
+								highlight: new TMap.PolygonStyle({
+									color: 'rgba(255, 255, 0, 0.6)'
+								})
+							},
+							geometries: [
+								{
+									paths: simplePath
+								}
+							]
+						}),
+						id: 'polygon',
+						selectedStyleId: 'highlight'
+					}
+				],
+				actionMode: TMap.tools.constants.EDITOR_ACTION.INTERACT, // 编辑器的工作模式
+				activeOverlayId: 'polygon', // 激活图层
+				selectable: true, // 开启点选功能
+				snappable: true // 开启吸附
+			});
+		}
+    </script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 应用工具_设置编辑点为GL模式.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>设置编辑点为GL模式</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=vector,tools"></script>
+<script charset="utf-8" src="https://mapapi.qq.com/web/jsapi/jsapi-gl/assets/geojson-demo.js"></script>
+<style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    #containerOne {
+        width: 100%;
+        height: 45%;
+
+    }
+
+    #containerTwo {
+        width: 100%;
+        height: 45%;
+    }
+
+    p {
+        margin: 0;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+</style>
+
+<body>
+    <div id="containerOne"></div>
+    <p>地图一: SVG编辑点绘制模式-当数据形点较少时建议使用该模式；默认为该模式</p>
+    <div id="containerTwo"></div>
+    <p>地图二: GL编辑点绘制模式-当编辑的数据形点量级较大时使用该模式性能较好；但图形的渲染质量可能受机器配置影响</p>
+    <script>
+        var center = new TMap.LatLng(39.984104, 116.307503);
+        //初始化地图一
+        var mapOne = new TMap.Map("containerOne", {
+            center,
+            zoom: 9, // 设置地图缩放级别
+        });
+
+        var geoLayerOne = new TMap.vector.GeoJSONLayer({
+            map: mapOne,
+            data: geojsonData,
+            polygonStyle: new TMap.PolygonStyle({
+                'showBorder': true, //是否显示边线
+                'borderColor': '#fff', //边线颜色
+                'borderWidth': 1 //边线宽度
+            })
+        });
+
+        // 获取geojson生成的polygon图层
+        var polygonLayer = geoLayerOne.getGeometryOverlay('polygon');
+        polygonLayer.setStyles({
+            highlight: new TMap.PolygonStyle({
+                color: 'rgba(255, 255, 0, 0.6)'
+            })
+        },
+        );
+
+        // 初始化几何图形及编辑器
+        var editorOne = new TMap.tools.GeometryEditor({
+            map: mapOne, // 编辑器绑定的地图对象
+            overlayList: [ // 可编辑图层
+                {
+                    overlay: polygonLayer,
+                    id: 'polygon',
+                    selectedStyleId: 'highlight'
+                }
+            ],
+            actionMode: TMap.tools.constants.EDITOR_ACTION.INTERACT, // 编辑器的工作模式
+            modifierShapeMode: TMap.tools.constants.MODIFIER_SHAPE_MODE.SVG, // 默认编辑点绘制模式为SVG
+            activeOverlayId: 'polygon', // 激活图层
+            selectable: true, // 开启点选功能
+        });
+
+    </script>
+    <script>
+        //初始化地图二
+        var mapTwo = new TMap.Map("containerTwo", {
+            center,
+            zoom: 9, // 设置地图缩放级别
+        });
+        var geoLayerTwo = new TMap.vector.GeoJSONLayer({
+            map: mapTwo,
+            data: geojsonData,
+            polygonStyle: new TMap.PolygonStyle({
+                'showBorder': true, //是否显示边线
+                'borderColor': '#fff', //边线颜色
+                'borderWidth': 1 //边线宽度
+            })
+        });
+
+        // 获取geojson生成的polygon图层
+        var polygonLayerTwo = geoLayerTwo.getGeometryOverlay('polygon');
+        polygonLayerTwo.setStyles({
+            highlight: new TMap.PolygonStyle({
+                color: 'rgba(255, 255, 0, 0.6)'
+            })
+        },
+        );
+
+        // 初始化几何图形及编辑器
+        var editorTwo = new TMap.tools.GeometryEditor({
+            map: mapTwo, // 编辑器绑定的地图对象
+            overlayList: [ // 可编辑图层
+                {
+                    overlay: polygonLayerTwo,
+                    id: 'polygon',
+                    selectedStyleId: 'highlight'
+                }
+            ],
+            actionMode: TMap.tools.constants.EDITOR_ACTION.INTERACT, // 编辑器的工作模式
+            modifierShapeMode: TMap.tools.constants.MODIFIER_SHAPE_MODE.GL, // 大数据量下的编辑点使用GL绘制模式编辑性能更佳
+            activeOverlayId: 'polygon', // 激活图层
+            selectable: true, // 开启点选功能
+        });
+    </script>
+</body>
+
+</html>
+
+</body>
+</html>

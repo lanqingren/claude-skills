@@ -1,0 +1,1207 @@
+<!DOCTYPE html>
+<!--
+  合并演示文件 - 类别: 几何计算库
+  包含 10 个演示: 几何计算库_判断多边形是否在另一个多边形内.html, 几何计算库_判断点与多边形的关系.html, 几何计算库_判断点是否在多边形边上.html, 几何计算库_计算区域面积.html, 几何计算库_计算多边形形心.html, 几何计算库_计算多边形的交集区域.html, 几何计算库_计算线上距离P点最近的点.html, 几何计算库_计算线与多边形是否相交.html, 几何计算库_计算路径距离.html, 几何计算库_路径顺逆时针判断与转换.html
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>几何计算库 - 合并演示</title>
+</head>
+<body>
+
+<!-- ============================================
+     Demo: 几何计算库_判断多边形是否在另一个多边形内.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>判断多边形是否在另一个多边形内</title>
+</head>
+<script charset="utf-8"
+  src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=geometry"></script>
+<style type="text/css">
+  html,
+  body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  #container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+  }
+
+  #info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      bottom: 60px;
+      height: 100px;
+      width: 420px;
+      line-height: 33px;
+      background-color: #fff;
+      border-radius: 10px;
+      font-size: 18px;
+      text-align: center;
+    }
+</style>
+
+<body onload="initMap()">
+  <div id="container"></div>
+  <div id="info"></div>
+  <script type="text/javascript">
+    var map;
+
+    function initMap() {
+      var center = new TMap.LatLng(40.040452, 116.273486);//设置中心点坐标
+      //初始化地图
+      map = new TMap.Map('container', {
+        center: center,
+        zoom: 17,
+        baseMap: {
+          type: 'vector',
+          features: ['base', 'building3d', 'label'],
+        }
+      });
+
+      var path0 = [
+        new TMap.LatLng(40.041117253378246, 116.2722415837743),
+        new TMap.LatLng(40.03942536171407, 116.2726277820093),
+        new TMap.LatLng(40.03970460886076, 116.27483769345417),
+        new TMap.LatLng(40.041404706498625, 116.27443003983899),
+      ];
+
+      var path1 = [
+         new TMap.LatLng(40.04073540132186, 116.27298706942383),
+         new TMap.LatLng(40.04002894945164, 116.27307290694716),
+         new TMap.LatLng(40.04021788498498, 116.27441411815198),
+         new TMap.LatLng(40.04085861888776, 116.27390982274846)
+      ];
+
+      var path2 = [
+         new TMap.LatLng(40.04329006723823, 116.2720643160992),
+         new TMap.LatLng(40.042181140299455, 116.27236474741039),
+         new TMap.LatLng(40.042320784222156, 116.27390982274846),
+         new TMap.LatLng(40.0434214942257, 116.27365231017848)
+      ];
+
+      var path3 = [
+         new TMap.LatLng(40.039692150139594, 116.27183899269767),
+         new TMap.LatLng(40.03990573041772, 116.27289050220497),
+         new TMap.LatLng(40.03903497572191, 116.27313728512036),
+         new TMap.LatLng(40.03898568742912, 116.2719033706253)
+      ]
+
+      var position1 = new TMap.LatLng(40.04202067344373, 116.2706967910799);
+      var position2 = new TMap.LatLng(40.040443786954235, 116.2736683713456);
+
+      var polygon = new TMap.MultiPolygon({
+        id: 'polygon-layer', //图层id
+        map: map,
+        styles: {
+          // 多边形的相关样式
+          base: new TMap.PolygonStyle({
+            color: 'rgba(255,255,255,0.9)', // 面填充色
+          }),
+          red: new TMap.PolygonStyle({
+            color: 'rgba(255,0,0,0.5)', // 面填充色
+          }),
+          green: new TMap.PolygonStyle({
+            color: 'rgba(0,255,0,0.5)', // 面填充色
+          }),
+          blue: new TMap.PolygonStyle({
+            color: 'rgba(0,0,255,0.5)', // 面填充色
+          }),
+        },
+        geometries: [
+          {
+            styleId:'base',
+            id: 'polygon0', 
+            paths: path0,
+          },
+          {
+            id: 'polygon1',
+            styleId:'red',
+            paths: path1,
+          },
+          {
+            id: 'polygon2', 
+            styleId:'green',
+            paths: path2,
+          },
+          {
+            id: 'polygon3', 
+            styleId:'blue',
+            paths: path3,
+          }
+        ]
+      });
+
+      var infoDom = document.getElementById('info');
+      infoDom.innerText = 
+        `${TMap.geometry.isPolygonInPolygon(path1, path0) ? '红色多边形在白色多边形内' : '红色多边形不在白色多边形内'}`+'\n'+
+        `${TMap.geometry.isPolygonInPolygon(path2, path0) ? '绿色多边形在白色多边形内' : '绿色多边形不在白色多边形内'}`+'\n'+
+        `${TMap.geometry.isPolygonInPolygon(path3, path0) ? '蓝色多边形在白色多边形内' : '蓝色多边形不在白色多边形内'}`+'\n';
+    }
+  </script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 几何计算库_判断点与多边形的关系.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算点与多边形的关系</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=geometry"></script>
+<style type="text/css">
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+</style>
+
+<body onload="initMap()">
+	<div id="container"></div>
+	<script type="text/javascript">
+      var map;
+
+      function initMap() {
+        var center = new TMap.LatLng(40.040452, 116.273486);//设置中心点坐标
+        //初始化地图
+        map = new TMap.Map('container', {
+          center: center,
+          zoom: 17,
+          baseMap: {
+            type: 'vector',
+            features: ['base', 'building3d', 'label'],
+          }
+        });
+
+        var path = [
+          new TMap.LatLng(40.041117253378246, 116.2722415837743),
+          new TMap.LatLng(40.03942536171407, 116.2726277820093),
+          new TMap.LatLng(40.03970460886076, 116.27483769345417),
+          new TMap.LatLng(40.041404706498625, 116.27443003983899),
+        ];
+        var position1 = new TMap.LatLng(40.04202067344373, 116.2706967910799);
+        var position2 = new TMap.LatLng(40.040443786954235, 116.2736683713456);
+
+        var polygon = new TMap.MultiPolygon({
+          id: 'polygon-layer', //图层id
+          map: map,
+          geometries: [
+            {
+              id: 'polygon', //多边形图形数据的标志信息
+              paths: path, //多边形的位置信息
+            }
+          ]
+        });
+
+        var getLabelText = function(pos) {
+          return TMap.geometry.isPointInPolygon(pos, path) ? '在多边形内部' : '在多边形外部'
+        };
+
+        var label = new TMap.MultiLabel({
+          id: 'label-layer', //图层id
+          map: map,
+          styles: {
+            building:  new TMap.LabelStyle({
+              size: 20, //文字大小属性
+              alignment: 'center', //文字水平对齐属性
+              verticalAlignment: 'middle' //文字垂直对齐属性
+            })
+          },
+          geometries: [
+            {
+              styleId: 'building',
+              position: position1,
+              content: getLabelText(position1),
+            },
+            {
+              styleId: 'building',
+              position: position2,
+              content: getLabelText(position2),
+            },
+          ]
+        });
+
+        var marker = new TMap.MultiMarker({
+          id: 'marker-layer',
+          map: map,
+          styles: {
+            marker: new TMap.MarkerStyle({
+              anchor: { x: 20, y: 60 },
+            })
+          },
+          geometries: [
+            {
+              styleId: 'marker',
+              position: position1,
+            },
+            {
+              styleId: 'marker',
+              position: position2,
+            },
+          ],
+        });
+      }
+	</script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 几何计算库_判断点是否在多边形边上.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断点是否在多边形的边上</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=geometry"></script>
+<style type="text/css">
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+</style>
+
+<body onload="initMap()">
+	<div id="container"></div>
+	<script type="text/javascript">
+      var map;
+
+      function initMap() {
+        var center = new TMap.LatLng(40.040452, 116.273486);//设置中心点坐标
+        //初始化地图
+        map = new TMap.Map('container', {
+          center: center,
+          zoom: 17,
+          baseMap: {
+            type: 'vector',
+            features: ['base', 'building3d', 'label'],
+          }
+        });
+
+        var path = [
+          new TMap.LatLng(40.041117253378246, 116.2722415837743),
+          new TMap.LatLng(40.03942536171407, 116.2726277820093),
+          new TMap.LatLng(40.03970460886076, 116.27483769345417),
+          new TMap.LatLng(40.041404706498625, 116.27443003983899),
+        ];
+        var position1 = new TMap.LatLng(40.04202067344373, 116.2706967910799);
+        var position2 = new TMap.LatLng(40.040443786954235, 116.2736683713456);
+        var position3 = new TMap.LatLng(40.03957540757015, 116.27386486303988);
+
+        var polygon = new TMap.MultiPolygon({
+          id: 'polygon-layer', //图层id
+          map: map,
+          geometries: [
+            {
+              id: 'polygon', //多边形图形数据的标志信息
+              paths: path, //多边形的位置信息
+            }
+          ]
+        });
+
+        var getLabelText = function(pos) {
+          // isPointOnSegment(point: LatLng, segment: LatLng[], tolerance: Number) tolerance单位为米
+          return TMap.geometry.isPointOnPolygon(pos, path, 10) ? '在多边形边上' : '不在多边形边上'
+        };
+
+        var label = new TMap.MultiMarker({
+          id: 'label-layer', //图层id
+          map: map,
+          styles: {
+            building:  new TMap.MarkerStyle({
+              size: 20, //文字大小属性
+              alignment: 'center', //文字水平对齐属性
+              verticalAlignment: 'bottom', //文字垂直对齐属性
+              offset:{
+                x: 0,
+                y: 35
+              }
+            })
+          },
+          geometries: [
+            {
+              styleId: 'building',
+              position: position1,
+              content: getLabelText(position1),
+            },
+            {
+              styleId: 'building',
+              position: position2,
+              content: getLabelText(position2),
+            },
+            {
+              styleId: 'building',
+              position: position3,
+              content: getLabelText(position3),
+            },
+          ]
+        });
+    }
+	</script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 几何计算库_计算区域面积.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算简单多边形的面积</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=geometry"></script>
+<style type="text/css">
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    #info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      bottom: 60px;
+      height: 80px;
+      width: 420px;
+      background-color: #fff;
+      border-radius: 10px;
+      font-size: 18px;
+      line-height: 80px;
+      text-align: center;
+    }
+</style>
+
+<body onload="initMap()">
+	<div id="container"></div>
+	<div id="info"></div>
+	<script type="text/javascript">
+      var map;
+
+      function initMap() {
+        var center = new TMap.LatLng(40.040452, 116.273486);//设置中心点坐标
+        //初始化地图
+        map = new TMap.Map('container', {
+          center: center,
+          zoom: 17
+        });
+
+        var path = [
+          new TMap.LatLng(40.041117253378246, 116.2722415837743),
+          new TMap.LatLng(40.03942536171407, 116.2726277820093),
+          new TMap.LatLng(40.03970460886076, 116.27483769345417),
+          new TMap.LatLng(40.041404706498625, 116.27443003983899),
+        ];
+
+        var polygon = new TMap.MultiPolygon({
+          id: 'polygon-layer', //图层id
+          map: map,
+          geometries: [
+            {
+              id: 'polygon', //多边形图形数据的标志信息
+              paths: path, //多边形的位置信息
+            }
+          ]
+        });
+
+        // 计算路径围成的多边形的面积
+        var area = TMap.geometry.computeArea(path);
+
+        var infoDom = document.getElementById('info');
+        infoDom.innerText = `腾讯北京总部大楼占地面积约为${area.toFixed(2)}平方米`;
+      }
+	</script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 几何计算库_计算多边形形心.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算简单多边形的形心</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=geometry"></script>
+<style type="text/css">
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    #info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      bottom: 60px;
+      height: 80px;
+      width: 420px;
+      background-color: #fff;
+      border-radius: 10px;
+      font-size: 18px;
+      line-height: 80px;
+      text-align: center;
+    }
+</style>
+
+<body onload="initMap()">
+	<div id="container"></div>
+	<div id="info">计算多边形的形心，在该点添加文本标注</div>
+	<script type="text/javascript">
+      var map;
+
+      function initMap() {
+        var center = new TMap.LatLng(40.040452, 116.273486);//设置中心点坐标
+        //初始化地图
+        map = new TMap.Map('container', {
+          center: center,
+          zoom: 17,
+          baseMap: {
+            type: 'vector',
+            features: ['base', 'building3d', 'label'],
+          }
+        });
+
+        var path = [
+          new TMap.LatLng(40.041117253378246, 116.2722415837743),
+          new TMap.LatLng(40.03942536171407, 116.2726277820093),
+          new TMap.LatLng(40.03970460886076, 116.27483769345417),
+          new TMap.LatLng(40.041404706498625, 116.27443003983899),
+        ];
+
+        // 计算多边形形心
+        var position = TMap.geometry.computeCentroid(path);
+
+        var polygon = new TMap.MultiPolygon({
+          id: 'polygon-layer', //图层id
+          map: map,
+          geometries: [
+            {
+              id: 'polygon', //多边形图形数据的标志信息
+              paths: path, //多边形的位置信息
+            }
+          ]
+        });
+
+        // 在形心位置添加文本标注
+        var label = new TMap.MultiLabel({
+          id: 'label-layer', //图层id
+          map: map,
+          styles: {
+            building:  new TMap.LabelStyle({
+              color: '#3777FF', //颜色属性
+              size: 20, //文字大小属性
+              alignment: 'center', //文字水平对齐属性
+              verticalAlignment: 'middle' //文字垂直对齐属性
+            })
+          },
+          geometries: [
+            {
+              id: 'label',
+              styleId: 'building',
+              position: position,
+              content: '腾讯北京总部',
+            }
+          ]
+        });    
+
+      }
+	</script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 几何计算库_计算多边形的交集区域.html
+     ============================================ -->
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>计算多边形与多边形的交集区域</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no" />
+    <style>
+        html,
+        body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            overflow: hidden;
+        }
+
+        #mapContainer {
+            width: 100%;
+            height: 100%;
+        }
+
+        .btnContainer {
+            position: absolute;
+            left: 20px;
+            top: 20px;
+            z-index: 10000;
+        }
+
+        .btnContainer button {
+            padding: 10px 14px;
+            box-sizing: border-box;
+            border: none;
+            background-color: #3876ff;
+            border-radius: 2px;
+            color: #fff;
+            font-size: 14px;
+            line-height: 14px;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="mapContainer"></div>
+    <div class="btnContainer">
+        <button class="btn1">计算左1和左2交集区域</button>
+        <button class="btn2">计算左2和左3交集区域</button>
+        <button class="btn3">计算左3和左1交集区域</button>
+    </div>
+    <script charset="utf-8"
+        src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=geometry"></script>
+
+    <script>
+        window.onload = initMap;
+        function initMap() {
+            var center = new TMap.LatLng(40.040452, 116.273486); //设置中心点坐标
+            //初始化地图
+            map = new TMap.Map('mapContainer', {
+                center: center,
+                zoom: 11
+            });
+
+            const p1 = [
+                // 左多边形
+                new TMap.LatLng(40.01328762425296, 116.2893131162964),
+                new TMap.LatLng(39.97042810128267, 116.2446964303781),
+                new TMap.LatLng(39.952803198235955, 116.30063889381927),
+                new TMap.LatLng(40.00434982223178, 116.3377050664094)
+            ];
+            const p2 = [
+                // 中间多边形
+                new TMap.LatLng(40.01854460829232, 116.34491237943803),
+                new TMap.LatLng(39.99856591344266, 116.30235492020074),
+                new TMap.LatLng(39.96516741243243, 116.35520853903654),
+                new TMap.LatLng(39.98147423199272, 116.37648726800035)
+            ];
+            const p3 = [
+                // 右多边形
+                new TMap.LatLng(39.9404367485336, 116.33009007781648),
+                new TMap.LatLng(40.00250953930389, 116.37839317743058),
+                new TMap.LatLng(39.983315080275965, 116.40079037547248)
+            ];
+
+            const geos = [
+                {
+                    id: '1',
+                    'paths': p1 //多边形的位置信息
+                },
+                {
+                    id: '2',
+                    'paths': p2 //多边形的位置信息
+                },
+                {
+                    id: '3',
+                    'paths': p3 //多边形的位置信息
+                }
+            ];
+
+            //初始化polygon
+            var polygon = new TMap.MultiPolygon({
+                id: 'polygon-layer', //图层id
+                map: map, //显示多边形图层的底图
+                styles: {
+                    heigh: new TMap.PolygonStyle({
+                        color: 'rgb(255,255,0)'
+                    })
+                },
+                geometries: geos
+            });
+
+            const testValue = {
+                'null': null,
+                'undefined': undefined,
+                '[]': [],
+                '': '',
+            };
+
+            document.querySelector('.btn1').addEventListener('click', (e) => {
+                var area = TMap.geometry.computePolygonIntersection(p1, p2);
+                console.log('计算左1和左2交集区域', area);
+                polygon.setGeometries([
+                    ...geos,
+                    {
+                        styleId: 'heigh',
+                        paths: area
+                    }
+                ]);
+            });
+
+            document.querySelector('.btn2').addEventListener('click', (e) => {
+                var area = TMap.geometry.computePolygonIntersection(p2, p3);
+                console.log('计算左2和左3交集区域', area);
+                const g = [...geos];
+                if (area) {
+                    g.push({
+                        styleId: 'heigh',
+                        paths: area
+                    });
+                }
+                polygon.setGeometries(g);
+            });
+
+            document.querySelector('.btn3').addEventListener('click', (e) => {
+                var area = TMap.geometry.computePolygonIntersection(p1, p3);
+                console.log('计算左3和左1交集区域', area);
+                const g = [...geos];
+                if (area) {
+                    g.push({
+                        styleId: 'heigh',
+                        paths: area
+                    });
+                }
+                polygon.setGeometries(g);
+            });
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 几何计算库_计算线上距离P点最近的点.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算线上距离P最近的点</title>
+</head>
+<script charset="utf-8"
+    src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=geometry"></script>
+<style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #container {
+        width: 100%;
+        height: 100%;
+        position: relative;
+    }
+
+    #info {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        bottom: 60px;
+        height: 80px;
+        width: 400px;
+        background-color: #fff;
+        border-radius: 10px;
+        font-size: 18px;
+        line-height: 80px;
+        text-align: center;
+    }
+</style>
+
+<body onload="initMap()">
+    <div id="container"></div>
+    <script type="text/javascript">
+        var map;
+
+        function initMap() {
+            var center = new TMap.LatLng(40.02288398281758, 116.28905901239955);//设置中心点坐标
+            //初始化地图
+            map = new TMap.Map('container', {
+                center: center,
+                zoom: 14,
+                baseMap:[ {
+                 type: "vector",
+                 features: ['base','label'], // 隐藏矢量文字
+               }]
+            });
+            var p = new TMap.LatLng(40.02797812361742, 116.30163420885106);
+            var path = [new TMap.LatLng(40.040452, 116.273486), new TMap.LatLng(40.006540, 116.303695)];
+            var polylineLayer = new TMap.MultiPolyline({
+                id: 'polyline-layer', //图层唯一标识
+                map: map,//绘制到目标地图
+                //折线数据定义
+                geometries: [
+                    {
+                        id: 'line',
+                        paths: path
+                    }
+                ]
+            });
+
+            var marker = new TMap.MultiMarker({
+                id: 'marker-layer',
+                map: map,
+                styles: {
+                    marker: new TMap.MarkerStyle({
+                        size: 16, //文字大小属性
+                        offset: {
+                            x: 0,
+                            y: 35
+                        }
+                    })
+                },
+                geometries: [
+                    {
+                        styleId: 'marker',
+                        position: p,
+                        content: 'P'
+                    },
+                    {
+                        styleId: 'marker',
+                        position: TMap.geometry.computeClosestPointOnLine(p, path),
+                        content: '线上距离P最近的点'
+                    },
+                ],
+            });
+
+        }
+
+    </script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 几何计算库_计算线与多边形是否相交.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>判断线是否与多边形相交</title>
+</head>
+<script charset="utf-8"
+    src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=geometry"></script>
+<style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        position: relative;
+        overflow: hidden;
+    }
+
+    #container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    #info {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        bottom: 60px;
+        height: 100px;
+        width: 420px;
+        line-height: 50px;
+        background-color: #fff;
+        border-radius: 10px;
+        font-size: 18px;
+        text-align: center;
+    }
+</style>
+
+<body onload="initMap()">
+    <div id="container"></div>
+    <div id="info"></div>
+    <script type="text/javascript">
+        var map;
+
+        function initMap() {
+            var center = new TMap.LatLng(40.040452, 116.273486);//设置中心点坐标
+            //初始化地图
+            map = new TMap.Map('container', {
+                center: center,
+                zoom: 18,
+                baseMap: {
+                    type: 'vector',
+                    features: ['base', 'building3d', 'label'],
+                }
+            });
+
+            var lineRed = [
+                new TMap.LatLng(40.04154035247704, 116.27144748316823),
+                new TMap.LatLng(40.04194283332685, 116.27456963249642),
+            ];
+
+            var lineBlue = [
+                new TMap.LatLng(40.04016040071088, 116.27174789647142),
+                new TMap.LatLng(40.040587531642345, 116.2749236907166),
+            ];
+
+            var path = [
+                new TMap.LatLng(40.041117253378246, 116.2722415837743),
+                new TMap.LatLng(40.03942536171407, 116.2726277820093),
+                new TMap.LatLng(40.03970460886076, 116.27483769345417),
+                new TMap.LatLng(40.041404706498625, 116.27443003983899),
+            ];
+
+            var polygon = new TMap.MultiPolygon({
+                id: 'polygon-layer', //图层id
+                map: map,
+                geometries: [
+                    {
+                        id: 'polygon', //多边形图形数据的标志信息
+                        paths: path, //多边形的位置信息
+                    }
+                ]
+            });
+
+            var polylineLayer = new TMap.MultiPolyline({
+                id: 'polyline-layer', //图层唯一标识
+                map: map,//绘制到目标地图
+                //折线数据定义
+                styles: {
+                    red: new TMap.PolylineStyle({
+                        color: 'rgba(255,0,0,0.8)', // 面填充色
+                    }),
+                    blue: new TMap.PolylineStyle({
+                        color: 'rgba(0,0,255,0.8)', // 面填充色
+                    }),
+                },
+                geometries: [
+                    {
+                        styleId: 'red',
+                        paths: lineRed
+                    },
+                    {
+                        styleId: 'blue',
+                        paths: lineBlue
+                    }
+                ]
+            });
+
+            var infoDom = document.getElementById('info');
+            infoDom.innerText =
+                `${TMap.geometry.isLinePolygonIntersect(lineRed, path) ? '红线与多边形相交' : '红线与多边形不相交'}` + '\n' +
+                `${TMap.geometry.isLinePolygonIntersect(lineBlue, path) ? '蓝线与多边形相交' : '蓝线与多边形不相交'}`;
+        }
+    </script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 几何计算库_计算路径距离.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>计算路径距离</title>
+</head>
+<script charset="utf-8" src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=geometry"></script>
+<style type="text/css">
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #container {
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    #info {
+      position: absolute;
+      left: 0;
+      right: 0;
+      margin: auto;
+      bottom: 60px;
+      height: 80px;
+      width: 400px;
+      background-color: #fff;
+      border-radius: 10px;
+      font-size: 18px;
+      line-height: 80px;
+      text-align: center;
+    }
+</style>
+
+<body onload="initMap()">
+	<div id="container"></div>
+	<div id="info"></div>
+	<script type="text/javascript">
+      var map;
+
+      function initMap() {
+        var center = new TMap.LatLng(40.02288398281758, 116.28905901239955);//设置中心点坐标
+        //初始化地图
+        map = new TMap.Map('container', {
+          center: center,
+          zoom: 14,
+        });
+
+        var tencent = new TMap.LatLng(40.040452, 116.273486);
+        var oldSummerPalace = new TMap.LatLng(40.006540, 116.303695);
+
+        var path = [tencent, oldSummerPalace];
+        var polylineLayer = new TMap.MultiPolyline({
+          id: 'polyline-layer', //图层唯一标识
+          map: map,//绘制到目标地图
+          //折线数据定义
+          geometries: [
+            {
+              id: 'line',
+              paths: path
+            }
+          ]
+        });
+
+        // 计算路径的实际距离
+        var distance = TMap.geometry.computeDistance(path);
+        var infoDom = document.getElementById('info');
+        infoDom.innerText = `腾讯北京总部到圆明园的直线距离为${distance.toFixed(2)}米`;
+      }
+	</script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 几何计算库_路径顺逆时针判断与转换.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>路径顺逆时针判断与转化</title>
+</head>
+<script charset="utf-8"
+    src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=geometry"></script>
+<style type="text/css">
+    html,
+    body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+        overflow: hidden;
+    }
+
+    #container {
+        position: relative;
+        width: 100%;
+        height: 100%;
+    }
+
+    #info {
+        position: absolute;
+        left: 0;
+        right: 0;
+        margin: auto;
+        bottom: 60px;
+        height: 80px;
+        width: 400px;
+        background-color: #fff;
+        border-radius: 10px;
+        font-size: 18px;
+        line-height: 80px;
+        text-align: center;
+    }
+
+    .btnContainer {
+        position: absolute;
+        left: 20px;
+        top: 20px;
+        z-index: 10000;
+    }
+
+    .btnContainer button {
+        padding: 10px 14px;
+        box-sizing: border-box;
+        border: none;
+        background-color: #3876ff;
+        border-radius: 2px;
+        color: #fff;
+        font-size: 14px;
+        line-height: 14px;
+        margin-bottom: 10px;
+    }
+</style>
+
+<body>
+    <div id="container"></div>
+    <div class="btnContainer">
+        <button class="btn1" onclick="transform()">路径变为顺时针</button>
+        <button class="btn2" onclick="transformAnti()">路径变为逆时针</button>
+    </div>
+    <div id="info"></div>
+    <script type="text/javascript">
+        var center = new TMap.LatLng(39.980309851613775, 116.30836114421982);
+        //初始化地图
+        var map = new TMap.Map("container", {
+            zoom: 17,
+            center: center
+        });
+        var paths = [
+            new TMap.LatLng(39.98250495981251, 116.30587233910774),
+            new TMap.LatLng(39.979150868392445, 116.30612982298771),
+            new TMap.LatLng(39.97921663629626, 116.3083828075105),
+            new TMap.LatLng(39.97892067935242, 116.31089327579048),
+            new TMap.LatLng(39.982554283513245, 116.31100056083596),
+            new TMap.LatLng(39.98250495981251, 116.3059933910774),
+        ];
+        var polylineLayer = new TMap.MultiPolyline({
+            map, // 绘制到目标地图
+            styles: { // 折线样式定义
+                'arrow_animation': new TMap.PolylineStyle({
+                    'color': 'rgba(255,0,0,0.6)', //线填充色
+                    'borderWidth': 2, //边线宽度
+                    'borderColor': '#008FFF', //边线颜色
+                    'width': 10, //折线宽度
+                    showArrow: true,
+                    arrowOptions: {
+                        width: 8, // 箭头图标宽度
+                        height: 5, // 箭头图标高度
+                        space: 50,  // 箭头图标之间的孔隙长度
+                        animSpeed: 50 // 箭头动态移动的速度 单位(像素/秒)
+                    },
+                })
+            },
+            geometries: [{
+                styleId: 'arrow_animation',
+                paths: paths
+            }],
+        });
+
+        var infoDom = document.getElementById('info');
+        infoDom.innerText = `路线为${TMap.geometry.isClockwise(paths) ? '顺时针' : '逆时针'}`;
+
+        function transform() {
+            paths = TMap.geometry.transfromClockwise(paths);
+            polylineLayer.setGeometries([{
+                styleId: 'arrow_animation',
+                paths: paths
+            }]);
+            infoDom.innerText = `路线为${TMap.geometry.isClockwise(paths) ? '顺时针' : '逆时针'}`;
+        }
+
+        function transformAnti() {
+            paths = TMap.geometry.transfromAntiClockwise(paths);
+            polylineLayer.setGeometries([{
+                styleId: 'arrow_animation',
+                paths: paths
+            }]);
+            infoDom.innerText = `路线为${TMap.geometry.isClockwise(paths) ? '顺时针' : '逆时针'}`;
+        }
+    </script>
+</body>
+
+</html>
+
+</body>
+</html>

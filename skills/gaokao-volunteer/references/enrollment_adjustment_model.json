@@ -1,0 +1,999 @@
+{
+  "model": "enrollment_adjusted_rank",
+  "province": "贵州",
+  "year": 2025,
+  "category": "物理类",
+  "total_plan": 129668,
+  "supply_curve": [
+    {
+      "rank": 1000,
+      "cumul_plans": 802,
+      "cumul_pct": 0.62
+    },
+    {
+      "rank": 2000,
+      "cumul_plans": 1606,
+      "cumul_pct": 1.24
+    },
+    {
+      "rank": 3000,
+      "cumul_plans": 2353,
+      "cumul_pct": 1.81
+    },
+    {
+      "rank": 4000,
+      "cumul_plans": 3174,
+      "cumul_pct": 2.45
+    },
+    {
+      "rank": 5000,
+      "cumul_plans": 3939,
+      "cumul_pct": 3.04
+    },
+    {
+      "rank": 6000,
+      "cumul_plans": 4737,
+      "cumul_pct": 3.65
+    },
+    {
+      "rank": 7000,
+      "cumul_plans": 5587,
+      "cumul_pct": 4.31
+    },
+    {
+      "rank": 8000,
+      "cumul_plans": 6384,
+      "cumul_pct": 4.92
+    },
+    {
+      "rank": 9000,
+      "cumul_plans": 7156,
+      "cumul_pct": 5.52
+    },
+    {
+      "rank": 10000,
+      "cumul_plans": 8078,
+      "cumul_pct": 6.23
+    },
+    {
+      "rank": 11000,
+      "cumul_plans": 8825,
+      "cumul_pct": 6.81
+    },
+    {
+      "rank": 12000,
+      "cumul_plans": 9585,
+      "cumul_pct": 7.39
+    },
+    {
+      "rank": 13000,
+      "cumul_plans": 10539,
+      "cumul_pct": 8.13
+    },
+    {
+      "rank": 14000,
+      "cumul_plans": 11286,
+      "cumul_pct": 8.7
+    },
+    {
+      "rank": 15000,
+      "cumul_plans": 11941,
+      "cumul_pct": 9.21
+    },
+    {
+      "rank": 16000,
+      "cumul_plans": 12910,
+      "cumul_pct": 9.96
+    },
+    {
+      "rank": 17000,
+      "cumul_plans": 13694,
+      "cumul_pct": 10.56
+    },
+    {
+      "rank": 18000,
+      "cumul_plans": 14655,
+      "cumul_pct": 11.3
+    },
+    {
+      "rank": 19000,
+      "cumul_plans": 15377,
+      "cumul_pct": 11.86
+    },
+    {
+      "rank": 20000,
+      "cumul_plans": 16508,
+      "cumul_pct": 12.73
+    },
+    {
+      "rank": 21000,
+      "cumul_plans": 17234,
+      "cumul_pct": 13.29
+    },
+    {
+      "rank": 22000,
+      "cumul_plans": 18115,
+      "cumul_pct": 13.97
+    },
+    {
+      "rank": 23000,
+      "cumul_plans": 19051,
+      "cumul_pct": 14.69
+    },
+    {
+      "rank": 24000,
+      "cumul_plans": 19991,
+      "cumul_pct": 15.42
+    },
+    {
+      "rank": 25000,
+      "cumul_plans": 20880,
+      "cumul_pct": 16.1
+    },
+    {
+      "rank": 26000,
+      "cumul_plans": 21740,
+      "cumul_pct": 16.77
+    },
+    {
+      "rank": 27000,
+      "cumul_plans": 22648,
+      "cumul_pct": 17.47
+    },
+    {
+      "rank": 28000,
+      "cumul_plans": 23436,
+      "cumul_pct": 18.07
+    },
+    {
+      "rank": 29000,
+      "cumul_plans": 24481,
+      "cumul_pct": 18.88
+    },
+    {
+      "rank": 30000,
+      "cumul_plans": 25328,
+      "cumul_pct": 19.53
+    },
+    {
+      "rank": 31000,
+      "cumul_plans": 26293,
+      "cumul_pct": 20.28
+    },
+    {
+      "rank": 32000,
+      "cumul_plans": 27130,
+      "cumul_pct": 20.92
+    },
+    {
+      "rank": 33000,
+      "cumul_plans": 27964,
+      "cumul_pct": 21.57
+    },
+    {
+      "rank": 34000,
+      "cumul_plans": 29069,
+      "cumul_pct": 22.42
+    },
+    {
+      "rank": 35000,
+      "cumul_plans": 29945,
+      "cumul_pct": 23.09
+    },
+    {
+      "rank": 36000,
+      "cumul_plans": 31308,
+      "cumul_pct": 24.14
+    },
+    {
+      "rank": 37000,
+      "cumul_plans": 32206,
+      "cumul_pct": 24.84
+    },
+    {
+      "rank": 38000,
+      "cumul_plans": 33053,
+      "cumul_pct": 25.49
+    },
+    {
+      "rank": 39000,
+      "cumul_plans": 33838,
+      "cumul_pct": 26.1
+    },
+    {
+      "rank": 40000,
+      "cumul_plans": 34701,
+      "cumul_pct": 26.76
+    },
+    {
+      "rank": 41000,
+      "cumul_plans": 35310,
+      "cumul_pct": 27.23
+    },
+    {
+      "rank": 42000,
+      "cumul_plans": 36496,
+      "cumul_pct": 28.15
+    },
+    {
+      "rank": 43000,
+      "cumul_plans": 37283,
+      "cumul_pct": 28.75
+    },
+    {
+      "rank": 44000,
+      "cumul_plans": 38291,
+      "cumul_pct": 29.53
+    },
+    {
+      "rank": 45000,
+      "cumul_plans": 38870,
+      "cumul_pct": 29.98
+    },
+    {
+      "rank": 46000,
+      "cumul_plans": 40338,
+      "cumul_pct": 31.11
+    },
+    {
+      "rank": 47000,
+      "cumul_plans": 41189,
+      "cumul_pct": 31.76
+    },
+    {
+      "rank": 48000,
+      "cumul_plans": 42236,
+      "cumul_pct": 32.57
+    },
+    {
+      "rank": 49000,
+      "cumul_plans": 43349,
+      "cumul_pct": 33.43
+    },
+    {
+      "rank": 50000,
+      "cumul_plans": 43953,
+      "cumul_pct": 33.9
+    },
+    {
+      "rank": 51000,
+      "cumul_plans": 44715,
+      "cumul_pct": 34.48
+    },
+    {
+      "rank": 52000,
+      "cumul_plans": 45548,
+      "cumul_pct": 35.13
+    },
+    {
+      "rank": 53000,
+      "cumul_plans": 46584,
+      "cumul_pct": 35.93
+    },
+    {
+      "rank": 54000,
+      "cumul_plans": 47322,
+      "cumul_pct": 36.49
+    },
+    {
+      "rank": 55000,
+      "cumul_plans": 48023,
+      "cumul_pct": 37.04
+    },
+    {
+      "rank": 56000,
+      "cumul_plans": 49069,
+      "cumul_pct": 37.84
+    },
+    {
+      "rank": 57000,
+      "cumul_plans": 50101,
+      "cumul_pct": 38.64
+    },
+    {
+      "rank": 58000,
+      "cumul_plans": 51317,
+      "cumul_pct": 39.58
+    },
+    {
+      "rank": 59000,
+      "cumul_plans": 52154,
+      "cumul_pct": 40.22
+    },
+    {
+      "rank": 60000,
+      "cumul_plans": 52831,
+      "cumul_pct": 40.74
+    },
+    {
+      "rank": 61000,
+      "cumul_plans": 53776,
+      "cumul_pct": 41.47
+    },
+    {
+      "rank": 62000,
+      "cumul_plans": 54658,
+      "cumul_pct": 42.15
+    },
+    {
+      "rank": 63000,
+      "cumul_plans": 55415,
+      "cumul_pct": 42.74
+    },
+    {
+      "rank": 64000,
+      "cumul_plans": 56136,
+      "cumul_pct": 43.29
+    },
+    {
+      "rank": 65000,
+      "cumul_plans": 57292,
+      "cumul_pct": 44.18
+    },
+    {
+      "rank": 66000,
+      "cumul_plans": 58217,
+      "cumul_pct": 44.9
+    },
+    {
+      "rank": 67000,
+      "cumul_plans": 59288,
+      "cumul_pct": 45.72
+    },
+    {
+      "rank": 68000,
+      "cumul_plans": 60338,
+      "cumul_pct": 46.53
+    },
+    {
+      "rank": 69000,
+      "cumul_plans": 61210,
+      "cumul_pct": 47.21
+    },
+    {
+      "rank": 70000,
+      "cumul_plans": 61956,
+      "cumul_pct": 47.78
+    },
+    {
+      "rank": 71000,
+      "cumul_plans": 63070,
+      "cumul_pct": 48.64
+    },
+    {
+      "rank": 72000,
+      "cumul_plans": 63927,
+      "cumul_pct": 49.3
+    },
+    {
+      "rank": 73000,
+      "cumul_plans": 64583,
+      "cumul_pct": 49.81
+    },
+    {
+      "rank": 74000,
+      "cumul_plans": 66182,
+      "cumul_pct": 51.04
+    },
+    {
+      "rank": 75000,
+      "cumul_plans": 67199,
+      "cumul_pct": 51.82
+    },
+    {
+      "rank": 76000,
+      "cumul_plans": 67741,
+      "cumul_pct": 52.24
+    },
+    {
+      "rank": 77000,
+      "cumul_plans": 68676,
+      "cumul_pct": 52.96
+    },
+    {
+      "rank": 78000,
+      "cumul_plans": 69652,
+      "cumul_pct": 53.72
+    },
+    {
+      "rank": 79000,
+      "cumul_plans": 70835,
+      "cumul_pct": 54.63
+    },
+    {
+      "rank": 80000,
+      "cumul_plans": 71940,
+      "cumul_pct": 55.48
+    },
+    {
+      "rank": 81000,
+      "cumul_plans": 72605,
+      "cumul_pct": 55.99
+    },
+    {
+      "rank": 82000,
+      "cumul_plans": 73400,
+      "cumul_pct": 56.61
+    },
+    {
+      "rank": 83000,
+      "cumul_plans": 74378,
+      "cumul_pct": 57.36
+    },
+    {
+      "rank": 84000,
+      "cumul_plans": 75481,
+      "cumul_pct": 58.21
+    },
+    {
+      "rank": 85000,
+      "cumul_plans": 76541,
+      "cumul_pct": 59.03
+    },
+    {
+      "rank": 86000,
+      "cumul_plans": 77250,
+      "cumul_pct": 59.58
+    },
+    {
+      "rank": 87000,
+      "cumul_plans": 78983,
+      "cumul_pct": 60.91
+    },
+    {
+      "rank": 88000,
+      "cumul_plans": 79614,
+      "cumul_pct": 61.4
+    },
+    {
+      "rank": 89000,
+      "cumul_plans": 80216,
+      "cumul_pct": 61.86
+    },
+    {
+      "rank": 90000,
+      "cumul_plans": 81713,
+      "cumul_pct": 63.02
+    },
+    {
+      "rank": 91000,
+      "cumul_plans": 82539,
+      "cumul_pct": 63.65
+    },
+    {
+      "rank": 92000,
+      "cumul_plans": 83744,
+      "cumul_pct": 64.58
+    },
+    {
+      "rank": 93000,
+      "cumul_plans": 85012,
+      "cumul_pct": 65.56
+    },
+    {
+      "rank": 94000,
+      "cumul_plans": 85668,
+      "cumul_pct": 66.07
+    },
+    {
+      "rank": 95000,
+      "cumul_plans": 86704,
+      "cumul_pct": 66.87
+    },
+    {
+      "rank": 96000,
+      "cumul_plans": 87799,
+      "cumul_pct": 67.71
+    },
+    {
+      "rank": 97000,
+      "cumul_plans": 88787,
+      "cumul_pct": 68.47
+    },
+    {
+      "rank": 98000,
+      "cumul_plans": 89663,
+      "cumul_pct": 69.15
+    },
+    {
+      "rank": 99000,
+      "cumul_plans": 90713,
+      "cumul_pct": 69.96
+    },
+    {
+      "rank": 100000,
+      "cumul_plans": 91558,
+      "cumul_pct": 70.61
+    },
+    {
+      "rank": 101000,
+      "cumul_plans": 92557,
+      "cumul_pct": 71.38
+    },
+    {
+      "rank": 102000,
+      "cumul_plans": 93964,
+      "cumul_pct": 72.47
+    },
+    {
+      "rank": 103000,
+      "cumul_plans": 95093,
+      "cumul_pct": 73.34
+    },
+    {
+      "rank": 104000,
+      "cumul_plans": 96691,
+      "cumul_pct": 74.57
+    },
+    {
+      "rank": 105000,
+      "cumul_plans": 97699,
+      "cumul_pct": 75.35
+    },
+    {
+      "rank": 106000,
+      "cumul_plans": 98560,
+      "cumul_pct": 76.01
+    },
+    {
+      "rank": 107000,
+      "cumul_plans": 99348,
+      "cumul_pct": 76.62
+    },
+    {
+      "rank": 108000,
+      "cumul_plans": 100024,
+      "cumul_pct": 77.14
+    },
+    {
+      "rank": 109000,
+      "cumul_plans": 101120,
+      "cumul_pct": 77.98
+    },
+    {
+      "rank": 110000,
+      "cumul_plans": 101641,
+      "cumul_pct": 78.39
+    },
+    {
+      "rank": 111000,
+      "cumul_plans": 102229,
+      "cumul_pct": 78.84
+    },
+    {
+      "rank": 112000,
+      "cumul_plans": 102692,
+      "cumul_pct": 79.2
+    },
+    {
+      "rank": 113000,
+      "cumul_plans": 103215,
+      "cumul_pct": 79.6
+    },
+    {
+      "rank": 114000,
+      "cumul_plans": 103802,
+      "cumul_pct": 80.05
+    },
+    {
+      "rank": 115000,
+      "cumul_plans": 104370,
+      "cumul_pct": 80.49
+    },
+    {
+      "rank": 116000,
+      "cumul_plans": 104598,
+      "cumul_pct": 80.67
+    },
+    {
+      "rank": 117000,
+      "cumul_plans": 105606,
+      "cumul_pct": 81.44
+    },
+    {
+      "rank": 118000,
+      "cumul_plans": 106372,
+      "cumul_pct": 82.03
+    },
+    {
+      "rank": 119000,
+      "cumul_plans": 107130,
+      "cumul_pct": 82.62
+    },
+    {
+      "rank": 120000,
+      "cumul_plans": 107970,
+      "cumul_pct": 83.27
+    },
+    {
+      "rank": 121000,
+      "cumul_plans": 108491,
+      "cumul_pct": 83.67
+    },
+    {
+      "rank": 122000,
+      "cumul_plans": 108845,
+      "cumul_pct": 83.94
+    },
+    {
+      "rank": 123000,
+      "cumul_plans": 109346,
+      "cumul_pct": 84.33
+    },
+    {
+      "rank": 124000,
+      "cumul_plans": 110018,
+      "cumul_pct": 84.85
+    },
+    {
+      "rank": 125000,
+      "cumul_plans": 110685,
+      "cumul_pct": 85.36
+    },
+    {
+      "rank": 126000,
+      "cumul_plans": 111585,
+      "cumul_pct": 86.05
+    },
+    {
+      "rank": 127000,
+      "cumul_plans": 112067,
+      "cumul_pct": 86.43
+    },
+    {
+      "rank": 128000,
+      "cumul_plans": 113003,
+      "cumul_pct": 87.15
+    },
+    {
+      "rank": 129000,
+      "cumul_plans": 113821,
+      "cumul_pct": 87.78
+    },
+    {
+      "rank": 130000,
+      "cumul_plans": 114265,
+      "cumul_pct": 88.12
+    },
+    {
+      "rank": 131000,
+      "cumul_plans": 114870,
+      "cumul_pct": 88.59
+    },
+    {
+      "rank": 132000,
+      "cumul_plans": 115415,
+      "cumul_pct": 89.01
+    },
+    {
+      "rank": 133000,
+      "cumul_plans": 115798,
+      "cumul_pct": 89.3
+    },
+    {
+      "rank": 134000,
+      "cumul_plans": 116221,
+      "cumul_pct": 89.63
+    },
+    {
+      "rank": 135000,
+      "cumul_plans": 116983,
+      "cumul_pct": 90.22
+    },
+    {
+      "rank": 136000,
+      "cumul_plans": 117693,
+      "cumul_pct": 90.76
+    },
+    {
+      "rank": 137000,
+      "cumul_plans": 118145,
+      "cumul_pct": 91.11
+    },
+    {
+      "rank": 138000,
+      "cumul_plans": 119137,
+      "cumul_pct": 91.88
+    },
+    {
+      "rank": 139000,
+      "cumul_plans": 119900,
+      "cumul_pct": 92.47
+    },
+    {
+      "rank": 140000,
+      "cumul_plans": 120620,
+      "cumul_pct": 93.02
+    },
+    {
+      "rank": 141000,
+      "cumul_plans": 122160,
+      "cumul_pct": 94.21
+    },
+    {
+      "rank": 142000,
+      "cumul_plans": 122776,
+      "cumul_pct": 94.68
+    },
+    {
+      "rank": 143000,
+      "cumul_plans": 123351,
+      "cumul_pct": 95.13
+    },
+    {
+      "rank": 144000,
+      "cumul_plans": 124149,
+      "cumul_pct": 95.74
+    },
+    {
+      "rank": 145000,
+      "cumul_plans": 124788,
+      "cumul_pct": 96.24
+    },
+    {
+      "rank": 146000,
+      "cumul_plans": 125150,
+      "cumul_pct": 96.52
+    },
+    {
+      "rank": 147000,
+      "cumul_plans": 125599,
+      "cumul_pct": 96.86
+    },
+    {
+      "rank": 148000,
+      "cumul_plans": 125925,
+      "cumul_pct": 97.11
+    },
+    {
+      "rank": 149000,
+      "cumul_plans": 126349,
+      "cumul_pct": 97.44
+    },
+    {
+      "rank": 150000,
+      "cumul_plans": 126623,
+      "cumul_pct": 97.65
+    },
+    {
+      "rank": 151000,
+      "cumul_plans": 126939,
+      "cumul_pct": 97.9
+    },
+    {
+      "rank": 152000,
+      "cumul_plans": 127297,
+      "cumul_pct": 98.17
+    },
+    {
+      "rank": 153000,
+      "cumul_plans": 127629,
+      "cumul_pct": 98.43
+    },
+    {
+      "rank": 154000,
+      "cumul_plans": 127965,
+      "cumul_pct": 98.69
+    },
+    {
+      "rank": 155000,
+      "cumul_plans": 128232,
+      "cumul_pct": 98.89
+    },
+    {
+      "rank": 156000,
+      "cumul_plans": 128583,
+      "cumul_pct": 99.16
+    },
+    {
+      "rank": 157000,
+      "cumul_plans": 128927,
+      "cumul_pct": 99.43
+    },
+    {
+      "rank": 158000,
+      "cumul_plans": 129638,
+      "cumul_pct": 99.98
+    },
+    {
+      "rank": 158061,
+      "cumul_plans": 129668,
+      "cumul_pct": 100.0
+    }
+  ],
+  "tier_percentiles": [
+    {
+      "pct": 1,
+      "rank_at_pct": 2000,
+      "cumul_plans": 1606
+    },
+    {
+      "pct": 3,
+      "rank_at_pct": 5000,
+      "cumul_plans": 3939
+    },
+    {
+      "pct": 5,
+      "rank_at_pct": 9000,
+      "cumul_plans": 7156
+    },
+    {
+      "pct": 10,
+      "rank_at_pct": 17000,
+      "cumul_plans": 13694
+    },
+    {
+      "pct": 15,
+      "rank_at_pct": 24000,
+      "cumul_plans": 19991
+    },
+    {
+      "pct": 20,
+      "rank_at_pct": 31000,
+      "cumul_plans": 26293
+    },
+    {
+      "pct": 30,
+      "rank_at_pct": 46000,
+      "cumul_plans": 40338
+    },
+    {
+      "pct": 40,
+      "rank_at_pct": 59000,
+      "cumul_plans": 52154
+    },
+    {
+      "pct": 50,
+      "rank_at_pct": 74000,
+      "cumul_plans": 66182
+    },
+    {
+      "pct": 60,
+      "rank_at_pct": 87000,
+      "cumul_plans": 78983
+    },
+    {
+      "pct": 70,
+      "rank_at_pct": 100000,
+      "cumul_plans": 91558
+    },
+    {
+      "pct": 80,
+      "rank_at_pct": 114000,
+      "cumul_plans": 103802
+    },
+    {
+      "pct": 90,
+      "rank_at_pct": 135000,
+      "cumul_plans": 116983
+    },
+    {
+      "pct": 100,
+      "rank_at_pct": 158061,
+      "cumul_plans": 129668
+    }
+  ],
+  "adjustment_table": [
+    {
+      "original_rank": 1000,
+      "plans_available": 802,
+      "pct_of_total": 0.6,
+      "pct_-10": 2000,
+      "pct_-5": 2000,
+      "pct_+0": 1000,
+      "pct_+5": 1000,
+      "pct_+10": 1000,
+      "pct_+15": 1000,
+      "pct_+20": 1000
+    },
+    {
+      "original_rank": 2000,
+      "plans_available": 1606,
+      "pct_of_total": 1.2,
+      "pct_-10": 3000,
+      "pct_-5": 3000,
+      "pct_+0": 2000,
+      "pct_+5": 2000,
+      "pct_+10": 2000,
+      "pct_+15": 2000,
+      "pct_+20": 2000
+    },
+    {
+      "original_rank": 5000,
+      "plans_available": 3939,
+      "pct_of_total": 3.0,
+      "pct_-10": 6000,
+      "pct_-5": 6000,
+      "pct_+0": 5000,
+      "pct_+5": 5000,
+      "pct_+10": 5000,
+      "pct_+15": 5000,
+      "pct_+20": 5000
+    },
+    {
+      "original_rank": 10000,
+      "plans_available": 8078,
+      "pct_of_total": 6.2,
+      "pct_-10": 12000,
+      "pct_-5": 11000,
+      "pct_+0": 10000,
+      "pct_+5": 10000,
+      "pct_+10": 10000,
+      "pct_+15": 9000,
+      "pct_+20": 9000
+    },
+    {
+      "original_rank": 20000,
+      "plans_available": 16508,
+      "pct_of_total": 12.7,
+      "pct_-10": 23000,
+      "pct_-5": 22000,
+      "pct_+0": 20000,
+      "pct_+5": 20000,
+      "pct_+10": 19000,
+      "pct_+15": 18000,
+      "pct_+20": 18000
+    },
+    {
+      "original_rank": 30000,
+      "plans_available": 25328,
+      "pct_of_total": 19.5,
+      "pct_-10": 34000,
+      "pct_-5": 32000,
+      "pct_+0": 30000,
+      "pct_+5": 29000,
+      "pct_+10": 28000,
+      "pct_+15": 27000,
+      "pct_+20": 26000
+    },
+    {
+      "original_rank": 50000,
+      "plans_available": 43953,
+      "pct_of_total": 33.9,
+      "pct_-10": 56000,
+      "pct_-5": 53000,
+      "pct_+0": 50000,
+      "pct_+5": 48000,
+      "pct_+10": 46000,
+      "pct_+15": 44000,
+      "pct_+20": 43000
+    },
+    {
+      "original_rank": 80000,
+      "plans_available": 71940,
+      "pct_of_total": 55.5,
+      "pct_-10": 89000,
+      "pct_-5": 85000,
+      "pct_+0": 80000,
+      "pct_+5": 77000,
+      "pct_+10": 74000,
+      "pct_+15": 71000,
+      "pct_+20": 68000
+    },
+    {
+      "original_rank": 100000,
+      "plans_available": 91558,
+      "pct_of_total": 70.6,
+      "pct_-10": 111000,
+      "pct_-5": 104000,
+      "pct_+0": 100000,
+      "pct_+5": 96000,
+      "pct_+10": 92000,
+      "pct_+15": 89000,
+      "pct_+20": 85000
+    },
+    {
+      "original_rank": 120000,
+      "plans_available": 107970,
+      "pct_of_total": 83.3,
+      "pct_-10": 140000,
+      "pct_-5": 129000,
+      "pct_+0": 120000,
+      "pct_+5": 113000,
+      "pct_+10": 106000,
+      "pct_+15": 102000,
+      "pct_+20": 99000
+    }
+  ],
+  "description": "基于贵州2025年物理类专业级招生计划数据建立的供给曲线模型。用于演示招生计划变化对不同位次段考生的影响。"
+}

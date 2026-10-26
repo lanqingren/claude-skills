@@ -1,0 +1,19 @@
+{
+  "id": "psychological-counselor",
+  "name": "psychological-counselor",
+  "displayName": "心理疏导师",
+  "version": "1.0.0",
+  "description": "覆盖所有心理场景的标准化心理疏导技能。遵循感知-拆解-疏导-修复-巩固五步法，适用于自我心理调节、他人情绪疏导、突发心理应激、长期心理困扰等所有情况。支持生成Word文档记录疏导过程和成长。不替代专业心理治疗。",
+  "type": "skill",
+  "author": "your-name",
+  "tags": ["psychology", "counseling", "emotional-support", "mental-health", "self-help", "stress-relief", "docx"],
+  "category": "wellness",
+  "entry": "SKILL.md",
+  "output": ["text", "docx"],
+  "scripts": {
+    "generate_report": "generate_report.py"
+  },
+  "config": {
+    "file": "config.json"
+  }
+}

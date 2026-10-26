@@ -1,0 +1,1235 @@
+{
+  "id": "codex-236",
+  "title": "Codex 技能合集",
+  "version": "2026-10-26",
+  "skillsDir": "skills",
+  "total": 236,
+  "categories": [
+    {
+      "name": "内容创作与社交媒体",
+      "count": 35
+    },
+    {
+      "name": "编程开发、云服务与安全",
+      "count": 32
+    },
+    {
+      "name": "图像、视频、音频与设计",
+      "count": 28
+    },
+    {
+      "name": "Agent、技能与工作流增强",
+      "count": 24
+    },
+    {
+      "name": "教育、学术与研究",
+      "count": 23
+    },
+    {
+      "name": "办公文档与文件效率",
+      "count": 21
+    },
+    {
+      "name": "财经、数据与商业分析",
+      "count": 21
+    },
+    {
+      "name": "电商、广告与营销运营",
+      "count": 18
+    },
+    {
+      "name": "生活、健康、出行与兴趣",
+      "count": 15
+    },
+    {
+      "name": "法律、政务与合规",
+      "count": 10
+    },
+    {
+      "name": "搜索、资讯与知识管理",
+      "count": 9
+    }
+  ],
+  "skills": [
+    {
+      "dir": "AI-Shifu Course Creator（AI 师傅课程创作器）",
+      "name": "AI-Shifu Course Creator（AI 师傅课程创作器）",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "A股-股市分析和投资顾问（安西军项目）",
+      "name": "A股-股市分析和投资顾问（安西军项目）",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "Evolution Engine",
+      "name": "Evolution Engine",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "GPT-Image2-Generation-Expert",
+      "name": "GPT-Image2-Generation-Expert",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "PBL-designer",
+      "name": "PBL-designer",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "QQBrowserUse",
+      "name": "QQBrowserUse",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "Tencent Cloud Infra",
+      "name": "Tencent Cloud Infra",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "TripCue",
+      "name": "TripCue",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "Video-Generation-New",
+      "name": "Video-Generation-New",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "Video-Generator-SeeDance",
+      "name": "Video-Generator-SeeDance",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "academic-figures",
+      "name": "academic-figures",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "academic-knowledge-base",
+      "name": "academic-knowledge-base",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "academic-learning-assistant",
+      "name": "academic-learning-assistant",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "academic-natural-rewrite",
+      "name": "academic-natural-rewrite",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "academic-paper-generator",
+      "name": "academic-paper-generator",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "academic-pre-review-committee",
+      "name": "academic-pre-review-committee",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "agently-mail",
+      "name": "agently-mail",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "ai-daily-news",
+      "name": "ai-daily-news",
+      "category": "搜索、资讯与知识管理"
+    },
+    {
+      "dir": "algorithmic-poster-philosophy",
+      "name": "algorithmic-poster-philosophy",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "api-image-generator",
+      "name": "api-image-generator",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "ardot-showcase-autolayout",
+      "name": "ardot-showcase-autolayout",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "ark-novel-to-tuiwen",
+      "name": "ark-novel-to-tuiwen",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "article-fin-knowledge",
+      "name": "article-fin-knowledge",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "asr-sentence-recognition",
+      "name": "asr-sentence-recognition",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "bazi-master",
+      "name": "bazi-master",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "biaoshu-writer",
+      "name": "biaoshu-writer",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "bid-analysis",
+      "name": "bid-analysis",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "cbt-therapist",
+      "name": "cbt-therapist",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "china-free-api-toolkit",
+      "name": "china-free-api-toolkit",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "china-hotdata",
+      "name": "china-hotdata",
+      "category": "搜索、资讯与知识管理"
+    },
+    {
+      "dir": "cloudbase",
+      "name": "cloudbase",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "code-reviewer",
+      "name": "code-reviewer",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "codex-ppt",
+      "name": "codex-ppt",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "codex皮肤设计",
+      "name": "codex皮肤设计",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "comic-style-image",
+      "name": "comic-style-image",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "contract-review",
+      "name": "contract-review",
+      "category": "法律、政务与合规"
+    },
+    {
+      "dir": "create-colleague",
+      "name": "create-colleague",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "cross-border-ecommerce-copywriter",
+      "name": "cross-border-ecommerce-copywriter",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "darwin-skill",
+      "name": "darwin-skill",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "data-redaction",
+      "name": "data-redaction",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "deep-research",
+      "name": "deep-research",
+      "category": "搜索、资讯与知识管理"
+    },
+    {
+      "dir": "diagram-builder",
+      "name": "diagram-builder",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "douyin_copy_extract",
+      "name": "douyin_copy_extract",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "duplicate-file-cleaner",
+      "name": "duplicate-file-cleaner",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "ecommerce-ai-toolkit",
+      "name": "ecommerce-ai-toolkit",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "ecommerce-product-selector",
+      "name": "ecommerce-product-selector",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "edgeone-pages-deploy",
+      "name": "edgeone-pages-deploy",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "equal-data-skill",
+      "name": "equal-data-skill",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "excel-auto-zh",
+      "name": "excel-auto-zh",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "excel-sync-bitable",
+      "name": "excel-sync-bitable",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "feishu-cli-installer",
+      "name": "feishu-cli-installer",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "fiction-crafter",
+      "name": "fiction-crafter",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "file-organizer",
+      "name": "file-organizer",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "finance-ledger-generator",
+      "name": "finance-ledger-generator",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "financial-report-analysis",
+      "name": "financial-report-analysis",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "find-skills",
+      "name": "find-skills",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "frontend-spec",
+      "name": "frontend-spec",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "fullstack-companion",
+      "name": "fullstack-companion",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "game-studio",
+      "name": "game-studio",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "gaokao-volunteer",
+      "name": "gaokao-volunteer",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "gaokao-volunteer-advisor",
+      "name": "gaokao-volunteer-advisor",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "global-biblio-base",
+      "name": "global-biblio-base",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "gongwenformat-pro",
+      "name": "gongwenformat-pro",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "gov-doc-writer",
+      "name": "gov-doc-writer",
+      "category": "法律、政务与合规"
+    },
+    {
+      "dir": "govwriter-pro",
+      "name": "govwriter-pro",
+      "category": "法律、政务与合规"
+    },
+    {
+      "dir": "guizang-ppt-skill",
+      "name": "guizang-ppt-skill",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "hermes-installer",
+      "name": "hermes-installer",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "hermes-skill",
+      "name": "hermes-skill",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "hot-news-summary",
+      "name": "hot-news-summary",
+      "category": "搜索、资讯与知识管理"
+    },
+    {
+      "dir": "huifu-pay-integration",
+      "name": "huifu-pay-integration",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "humanizer",
+      "name": "humanizer",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "hyperframes-engine",
+      "name": "hyperframes-engine",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "ima-skill",
+      "name": "ima-skill",
+      "category": "搜索、资讯与知识管理"
+    },
+    {
+      "dir": "image-gen",
+      "name": "image-gen",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "image-video-gen-mcp",
+      "name": "image-video-gen-mcp",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "interactive-architecture-diagram",
+      "name": "interactive-architecture-diagram",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "job-hunting-hub",
+      "name": "job-hunting-hub",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "jrj-quote-skill",
+      "name": "jrj-quote-skill",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "k12-smart-teacher",
+      "name": "k12-smart-teacher",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "karpathy-guidelines",
+      "name": "karpathy-guidelines",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "kdocs",
+      "name": "kdocs",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "law-skills",
+      "name": "law-skills",
+      "category": "法律、政务与合规"
+    },
+    {
+      "dir": "learning-feynman",
+      "name": "learning-feynman",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "legal-hybrid-skill",
+      "name": "legal-hybrid-skill",
+      "category": "法律、政务与合规"
+    },
+    {
+      "dir": "legal-kb",
+      "name": "legal-kb",
+      "category": "法律、政务与合规"
+    },
+    {
+      "dir": "legaldoc-ai",
+      "name": "legaldoc-ai",
+      "category": "法律、政务与合规"
+    },
+    {
+      "dir": "llm-wiki",
+      "name": "llm-wiki",
+      "category": "搜索、资讯与知识管理"
+    },
+    {
+      "dir": "log-analyzer",
+      "name": "log-analyzer",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "lottery-predict",
+      "name": "lottery-predict",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "lunwens",
+      "name": "lunwens",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "markdown-to-flowchart",
+      "name": "markdown-to-flowchart",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "market-research",
+      "name": "market-research",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "math-mistake-review-skill",
+      "name": "math-mistake-review-skill",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "maxhub-bilibili",
+      "name": "maxhub-bilibili",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "maxhub-douyin",
+      "name": "maxhub-douyin",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "maxhub-kuaishou",
+      "name": "maxhub-kuaishou",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "maxhub-linkedin",
+      "name": "maxhub-linkedin",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "maxhub-pipixia",
+      "name": "maxhub-pipixia",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "maxhub-reddit",
+      "name": "maxhub-reddit",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "maxhub-sora2",
+      "name": "maxhub-sora2",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "meeting-notes-assistant",
+      "name": "meeting-notes-assistant",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "meituan-travel",
+      "name": "meituan-travel",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "memory-framework",
+      "name": "memory-framework",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "memory-manager-v3",
+      "name": "memory-manager-v3",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "mindmap-generator",
+      "name": "mindmap-generator",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "miniprogram-development",
+      "name": "miniprogram-development",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "multi-source-h5-builder",
+      "name": "multi-source-h5-builder",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "my-network-skill",
+      "name": "my-network-skill",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "nologo-open-api",
+      "name": "nologo-open-api",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "novel-evaluator",
+      "name": "novel-evaluator",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "office-automation",
+      "name": "office-automation",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "one-person-company",
+      "name": "one-person-company",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "onkos",
+      "name": "onkos",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "opencli-agent",
+      "name": "opencli-agent",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "paper-reference-formatter",
+      "name": "paper-reference-formatter",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "patent-disclosure-skill",
+      "name": "patent-disclosure-skill",
+      "category": "法律、政务与合规"
+    },
+    {
+      "dir": "pdf-fast-handler",
+      "name": "pdf-fast-handler",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "pdf-image-text-extractor",
+      "name": "pdf-image-text-extractor",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "pdf-ocr-md",
+      "name": "pdf-ocr-md",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "perfect-distillation-skill",
+      "name": "perfect-distillation-skill",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "pm-master",
+      "name": "pm-master",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "poster-generate",
+      "name": "poster-generate",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "ppt-generator",
+      "name": "ppt-generator",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "prd-to-design-doc",
+      "name": "prd-to-design-doc",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "premarket-sentiment-analysis",
+      "name": "premarket-sentiment-analysis",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "processon-diagram-generator",
+      "name": "processon-diagram-generator",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "processon-mindmap-generator",
+      "name": "processon-mindmap-generator",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "progress-assistant",
+      "name": "progress-assistant",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "promptmaster",
+      "name": "promptmaster",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "province-score-line",
+      "name": "province-score-line",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "psychological-counselor",
+      "name": "psychological-counselor",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "qa-req2testcase-generator",
+      "name": "qa-req2testcase-generator",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "qclaw-cleaner",
+      "name": "qclaw-cleaner",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "realtime-translator",
+      "name": "realtime-translator",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "resource-hunter-skill",
+      "name": "resource-hunter-skill",
+      "category": "搜索、资讯与知识管理"
+    },
+    {
+      "dir": "risk-analysis",
+      "name": "risk-analysis",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "sa-pro-workbench",
+      "name": "sa-pro-workbench",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "score-range",
+      "name": "score-range",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "seedance-prompt-expert",
+      "name": "seedance-prompt-expert",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "seedance-video-gen",
+      "name": "seedance-video-gen",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "self-evolution",
+      "name": "self-evolution",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "self-iteration",
+      "name": "self-iteration",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "shannon-pentest",
+      "name": "shannon-pentest",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "shugu-book-bone",
+      "name": "shugu-book-bone",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "skill-vetter",
+      "name": "skill-vetter",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "solo-ecom-pilot",
+      "name": "solo-ecom-pilot",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "sop-extractor",
+      "name": "sop-extractor",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "spec-workflow-guide",
+      "name": "spec-workflow-guide",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "stock-analysis",
+      "name": "stock-analysis",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "stock-analyzer-v4",
+      "name": "stock-analyzer-v4",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "stock-catalyst-hunter",
+      "name": "stock-catalyst-hunter",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "stock-lianghuafenxi-tdx",
+      "name": "stock-lianghuafenxi-tdx",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "stock-selecter",
+      "name": "stock-selecter",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "superpowers",
+      "name": "superpowers",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "taobao-shangou",
+      "name": "taobao-shangou",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "tax-policy-knowledge",
+      "name": "tax-policy-knowledge",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "tcm-constitution-recognition-analysis",
+      "name": "tcm-constitution-recognition-analysis",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "tdxuse",
+      "name": "tdxuse",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "teacher-assistant",
+      "name": "teacher-assistant",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "teacher-grant-application",
+      "name": "teacher-grant-application",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "tencent-agent-storage",
+      "name": "tencent-agent-storage",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "tencent-channel-community",
+      "name": "tencent-channel-community",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "tencent-cloud-cos",
+      "name": "tencent-cloud-cos",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "tencent-docs",
+      "name": "tencent-docs",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "tencent-edgeone-skill",
+      "name": "tencent-edgeone-skill",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "tencent-mps",
+      "name": "tencent-mps",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "tencent-news",
+      "name": "tencent-news",
+      "category": "搜索、资讯与知识管理"
+    },
+    {
+      "dir": "tencent-novnc-chromium-cdp",
+      "name": "tencent-novnc-chromium-cdp",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "tencent-weather",
+      "name": "tencent-weather",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "tencentads-advertiser",
+      "name": "tencentads-advertiser",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "tencentads-auth",
+      "name": "tencentads-auth",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "tencentads-creatives",
+      "name": "tencentads-creatives",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "tencentads-delivery-smart-create",
+      "name": "tencentads-delivery-smart-create",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "tencentads-delivery-standard-create",
+      "name": "tencentads-delivery-standard-create",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "tencentads-delivery-standard-update",
+      "name": "tencentads-delivery-standard-update",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "tencentads-management",
+      "name": "tencentads-management",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "tencentcloud-aigc-recog-image",
+      "name": "tencentcloud-aigc-recog-image",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "tencentcloud-faceid-detectlivefaceaccurate",
+      "name": "tencentcloud-faceid-detectlivefaceaccurate",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "tencentcloud-lighthouse-skill",
+      "name": "tencentcloud-lighthouse-skill",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "tencentcloud-ocr-generalaccurate",
+      "name": "tencentcloud-ocr-generalaccurate",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "tencentcloud-ocr-questionmarkagent",
+      "name": "tencentcloud-ocr-questionmarkagent",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "tencentcloud-tione-skill",
+      "name": "tencentcloud-tione-skill",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "tencentmap-map-assistant-skill",
+      "name": "tencentmap-map-assistant-skill",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "tencentos-expert",
+      "name": "tencentos-expert",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "tender-search",
+      "name": "tender-search",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "thesis-architect",
+      "name": "thesis-architect",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "thesis-tutor",
+      "name": "thesis-tutor",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "tianji",
+      "name": "tianji",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "tiktok-pro",
+      "name": "tiktok-pro",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "token-saver-qclaw",
+      "name": "token-saver-qclaw",
+      "category": "法律、政务与合规"
+    },
+    {
+      "dir": "tomato-novelist",
+      "name": "tomato-novelist",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "tong-jincheng-perspective",
+      "name": "tong-jincheng-perspective",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "toutiao-pro",
+      "name": "toutiao-pro",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "ui-design-guide",
+      "name": "ui-design-guide",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "ui-design-system",
+      "name": "ui-design-system",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "uniapp-expert",
+      "name": "uniapp-expert",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "utility-toolkit",
+      "name": "utility-toolkit",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "video-cinematography",
+      "name": "video-cinematography",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "video-use",
+      "name": "video-use",
+      "category": "图像、视频、音频与设计"
+    },
+    {
+      "dir": "web-composite-search",
+      "name": "web-composite-search",
+      "category": "搜索、资讯与知识管理"
+    },
+    {
+      "dir": "web-development",
+      "name": "web-development",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "web-tools-guide",
+      "name": "web-tools-guide",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "wechat-cover",
+      "name": "wechat-cover",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "wechat-mp-suite",
+      "name": "wechat-mp-suite",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "wechat-pro",
+      "name": "wechat-pro",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "wechat-search",
+      "name": "wechat-search",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "wechat-write",
+      "name": "wechat-write",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "wecom-cli-installer",
+      "name": "wecom-cli-installer",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "wecom-unified",
+      "name": "wecom-unified",
+      "category": "电商、广告与营销运营"
+    },
+    {
+      "dir": "weibo-pro",
+      "name": "weibo-pro",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "westock-data",
+      "name": "westock-data",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "workbuddy-guide",
+      "name": "workbuddy-guide",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "workbuddy-onboarding",
+      "name": "workbuddy-onboarding",
+      "category": "Agent、技能与工作流增强"
+    },
+    {
+      "dir": "wxa-skills-generate",
+      "name": "wxa-skills-generate",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "wxa-skills-validate",
+      "name": "wxa-skills-validate",
+      "category": "编程开发、云服务与安全"
+    },
+    {
+      "dir": "x-pro",
+      "name": "x-pro",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "xiaohongshu-pro",
+      "name": "xiaohongshu-pro",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "xiaohongshu-search",
+      "name": "xiaohongshu-search",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "xlsx",
+      "name": "xlsx",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "yijing-laozi-thinking",
+      "name": "yijing-laozi-thinking",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "youtube-pro",
+      "name": "youtube-pro",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "zhihu-pro",
+      "name": "zhihu-pro",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "zlbx-bidding",
+      "name": "zlbx-bidding",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "一键生成抖音爆款口播文案",
+      "name": "一键生成抖音爆款口播文案",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "八字排盘",
+      "name": "八字排盘",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "垃圾清理大师",
+      "name": "垃圾清理大师",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "微信公众号写作工具",
+      "name": "微信公众号写作工具",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "微信读书",
+      "name": "微信读书",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "数据分析大师",
+      "name": "数据分析大师",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "旅游助手-CN",
+      "name": "旅游助手-CN",
+      "category": "生活、健康、出行与兴趣"
+    },
+    {
+      "dir": "智能体需求文档生成skill",
+      "name": "智能体需求文档生成skill",
+      "category": "办公文档与文件效率"
+    },
+    {
+      "dir": "法律",
+      "name": "法律",
+      "category": "法律、政务与合规"
+    },
+    {
+      "dir": "股票价值投资分析 (valuation-analysis)",
+      "name": "股票价值投资分析 (valuation-analysis)",
+      "category": "财经、数据与商业分析"
+    },
+    {
+      "dir": "腾讯文档-高考志愿填报助手",
+      "name": "腾讯文档-高考志愿填报助手",
+      "category": "教育、学术与研究"
+    },
+    {
+      "dir": "视频号爆款短视频拆解（付费版：全能）【零一数科·出品】",
+      "name": "视频号爆款短视频拆解（付费版：全能）【零一数科·出品】",
+      "category": "内容创作与社交媒体"
+    },
+    {
+      "dir": "跨境电商选品分析",
+      "name": "跨境电商选品分析",
+      "category": "电商、广告与营销运营"
+    }
+  ]
+}

@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<!--
+  合并演示文件 - 类别: 其他可视化
+  包含 4 个演示: 全国行政区划.html, 动态围墙面.html, 动态辐射圈.html, 水晶体.html
+-->
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>其他可视化 - 合并演示</title>
+</head>
+<body>
+
+<!-- ============================================
+     Demo: 全国行政区划.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>全国行政区划图</title>
+  </head>
+  <script
+    charset="utf-8"
+    src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=visualization"
+  ></script>
+  <style type="text/css">
+    html,
+    body {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+    }
+    #container {
+      width: 100%;
+      height: 100%;
+    }
+    #panel {
+        position: absolute;
+        background: #FFF;
+        width:350px;
+        padding: 20px;
+        z-index: 9999;
+        top: 30px;
+        left: 30px;
+    }
+  </style>
+  <body>
+    <div id="panel">
+      <p>请在右侧示例代码第59行填入您的key，并执行查看运行结果（key可在控制台应用管理中自行创建）</p>
+    </div>
+    <div id="container"></div>
+    <script src="https://lbs.gtimg.com/visual/lbs_component/v/jquery-1.11.0.min.js"></script>
+    <script src="https://mapapi.qq.com/web/visualization/demo-asset/styleMap.js"></script>
+    <script type="text/javascript">
+      //初始化地图
+      var map = new TMap.Map("container", {
+        center: new TMap.LatLng(34.22379225102061, 108.39352326742096), //设置地图中心坐标
+        zoom: 4, //地图进行缩放
+        mapStyleId: "style7", //个性化样式
+        baseMap: {
+          //设置底图样式
+          type: "vector", //设置底图为矢量底图
+          features: [
+            //设置矢量底图要素类型
+            "base",
+            "point",
+          ],
+        },
+      });
+      $.ajax({
+        url:
+          "https://apis.map.qq.com/ws/district/v1/getchildren?key=您的key&output=jsonp&get_polygon=2&max_offset=3000", // 请求地址+参数
+        type: "GET", //get请求
+        dataType: "JSONP", //指定服务器返回的数据类型
+        success: function (res) {
+          var list = [];
+          list = res.result[0]; //获取数据
+          var paths = [];
+          list.forEach((item, index) => {
+            const styleId = styleMap[item.id]; //数据所有的id值
+            const path = []; // TODO
+            item.polygon.forEach((p) => {
+              path.push([p.reverse()]);
+            }); //进行纬经度进行调换位置
+            paths.push({
+              path, //经纬度点串
+              styleId, //id=styleId
+            });
+          });
+          var area = new TMap.visualization.Area({
+            styles: {
+              //设置区域图样式
+              styel1: {
+                fillColor: "#7DF4FF", //设置区域颜色
+                strokeColor: "#014080", //设置区域边线颜色
+              },
+              styel2: {
+                fillColor: "#17D5DC", //设置区域颜色
+                strokeColor: "#014080", //设置区域边线颜色
+              },
+              styel3: {
+                fillColor: "#0EB2E7", //设置区域颜色
+                strokeColor: "#014080", //设置区域边线颜色
+              },
+              styel4: {
+                fillColor: "#0896EF", //设置区域颜色
+                strokeColor: "#014080", //设置区域边线颜色
+              },
+              styel5: {
+                fillColor: "#017CF7", //设置区域颜色
+                strokeColor: "#014080", //设置区域边线颜色
+              },
+            },
+          })
+            .setData(paths)
+            .addTo(map);
+        },
+      });
+    </script>
+  </body>
+</html>
+
+
+<!-- ============================================
+     Demo: 动态围墙面.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>动态围墙线</title>
+</head>
+<script charset="utf-8"
+  src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=visualization"></script>
+<style type="text/css">
+  html,
+  body {
+    height: 100%;
+    margin: 0px;
+    padding: 0px;
+  }
+
+  #container {
+    width: 100%;
+    height: 100%;
+  }
+</style>
+
+<body onload="initMap()">
+  <div id="container"></div>
+  <script src="https://mapapi.qq.com/web/lbs/visualizationApi/demo/data/wallLine.js"></script>
+  <script>
+    function initMap() {
+      //初始化地图
+      var map = new TMap.Map("container", {
+        zoom: 11.5, //设置地图缩放级别
+        center: new TMap.LatLng(40.0324251949936, 116.23647955854779), //设置地图中心点坐标
+        pitch: 40, // 设置地图俯仰角
+        mapStyleId: "style4", //个性化样式
+        renderOptions: {
+          enableBloom: true, // 泛光
+        },
+        baseMap: {
+          type: "vector",
+          features: ["base", "building3d"], // 隐藏矢量文字
+        },
+      });
+
+      var path = convertToPath(wallLine);
+      var wallData = {
+        path: path, //	经纬度数组
+        height: 4500, //围墙面高度
+        styleId: "style1", //围墙面样式配置id
+      };
+
+      //初始化围墙线
+      var Wall = new TMap.visualization.Wall({
+        styles: {
+          style1: {
+            color: new TMap.GradientColor({
+              stops: {
+                0: "rgba(1,124,247,0.6)",
+                1: "rgba(29,250,242,1)",
+              },
+              angle: 90, //渐变色中的断点集合
+            }),
+            strokeColor: 'rgba(29,250,242,1)', //边线颜色
+            strokeWidth: 2, //边线宽度
+          },
+        },
+        processAnimation: {
+          animationType: "breath", //动画类型名称
+          breathAmplitude: 0.5, //呼吸幅度
+          yoyo: true, //是否回弹
+          duration: 1000, //动画时长
+        },
+
+      })
+        .addTo(map)
+      Wall.setData([wallData]);
+
+      function convertToPath(array) {
+        return array.map((p) => {
+          if (p.length == 2) return new TMap.LatLng(p[0], p[1]);
+          if (p.length == 3) return new TMap.LatLng(p[0], p[1], p[2]);
+        });
+      }
+    }
+  </script>
+</body>
+
+</html>
+
+<!-- ============================================
+     Demo: 动态辐射圈.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>动态辐射圈</title>
+    <script
+      charset="utf-8"
+      src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=visualization"
+    ></script>
+    <style type="text/css">
+      html,
+      body {
+        height: 100%;
+        margin: 0px;
+        padding: 0px;
+      }
+      #container {
+        width: 100%;
+        height: 100%;
+      }
+      #name {
+        position: absolute;
+        bottom: 10px;
+        right: 20px;
+        font-size: 12px;
+        color:#ffffff;
+      }
+    </style>
+  </head>
+  <body onload="initMap()">
+    <div id="container"></div>
+    <div id="name">北京市道路积水预警</div>
+    <script src="https://mapapi.qq.com/web/lbs/visualizationApi/demo/data/beijing_pondingWarning.js"></script>
+    <script>
+      function initMap() {
+        //初始化地图
+        var map = new TMap.Map("container", {
+          zoom: 11.5, //设置地图缩放级别
+          center: new TMap.LatLng(39.914961477236766, 116.3898104098216), //设置地图中心点坐标
+          mapStyleId: "style4", //个性化样式2
+          renderOptions: {
+            enableBloom: true, //泛光
+          },
+        });
+        //初始化辐射圈
+        var radiationCircle = new TMap.visualization.Radiation({
+          styles: {
+            style2: {
+              fillColor: "rgba(29,250,242,0.9)", //辐射圈填充颜色
+            },
+          },
+          processAnimation: {
+            duration: 3000, //辐射圈半径从0到最大半径的时长，单位为ms
+          },
+        })
+          .addTo(map)
+          radiationCircle.setData(radiationData);
+
+        //初始化散点图并添加至map图层
+        var dot = new TMap.visualization.Dot({
+          styles: {
+            style1: {
+              radius: 2, //圆形半径
+            },
+            style2: {
+              fillColor: "rgba(29,250,242,1)", //圆形填充颜色
+              radius: 3, //圆形半径
+            },
+          },
+          enableBloom: true, // 泛光
+        })
+          .addTo(map)
+          dot.setData(dotData); //设置数据
+      }
+    </script>
+  </body>
+</html>
+
+
+<!-- ============================================
+     Demo: 水晶体.html
+     ============================================ -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, addTo-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>水晶体</title>
+  </head>
+  <script
+    charset="utf-8"
+    src="https://map.qq.com/api/gljs?v=1.exp&key=OB4BZ-D4W3U-B7VVO-4PJWW-6TKDJ-WPB77&libraries=visualization"
+  ></script>
+  <style type="text/css">
+    html,
+    body {
+      height: 100%;
+      margin: 0px;
+      padding: 0px;
+      position: relative;
+    }
+
+    #container {
+      width: 100%;
+      height: 100%;
+    }
+
+    #box {
+      position: absolute;
+      z-index: 9999;
+      bottom: 50px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 1103px;
+    }
+
+    #button {
+      width: 100%;
+      height: 5px;
+      background-image: url("https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/progressBar.png");
+      background-size: 100% 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #optional {
+      width: 19.5%;
+      height: 100%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: -5px;
+    }
+
+    #optional div {
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      background-image: url("https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/buttonOptional.png");
+      background-size: 100% 100%;
+      cursor: pointer;
+    }
+
+    #optional div:nth-child(3) {
+      background-image: url("https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/buttonSelec.png");
+      background-size: 100% 100%;
+    }
+
+    #notOptional {
+      width: 81.5%;
+      height: 100%;
+      box-sizing: border-box;
+      padding-left: 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-right: -10px;
+    }
+
+    #notOptional div {
+      border-radius: 50%;
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      background-image: url("https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/buttonNotOptional.png");
+      background-size: 100% 100%;
+    }
+
+    #month {
+      width: 100%;
+
+      display: flex;
+      align-items: center;
+      margin-top: 20px;
+      color: #fff;
+    }
+
+    #month #optional_text {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+
+      margin-left: -20px;
+    }
+
+    #month #optional_text div {
+      height: 34px;
+      width: 74px;
+      line-height: 34px;
+      cursor: pointer;
+      border-right: 50px;
+      text-align: center;
+      margin-right: 12px;
+    }
+
+    #month #optional_text div:nth-child(1) {
+      margin-left: -10px;
+    }
+
+    #month #optional_text div:nth-child(2) {
+      margin-left: 10px;
+    }
+
+    #month #optional_text div:nth-child(3) {
+      margin-left: 10px;
+      margin-right: 19px;
+    }
+
+    #month #notOptional_text {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-left: 10px;
+      color: rgba(255, 255, 255, 0.3);
+    }
+
+    #month #notOptional_text div {
+      height: 34px;
+      line-height: 34px;
+      width: 74px;
+      cursor: pointer;
+      border-right: 50px;
+      text-align: center;
+      margin-right: 26px;
+    }
+    #notes {
+      position: absolute;
+      z-index: 9999;
+      top: 30px;
+      left: 30px;
+      width: 180px;
+      height: 200px;
+      background-image: url("https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/notes.png");
+      background-size: 100% 100%;
+    }
+  </style>
+
+  <body>
+    <div id="container"></div>
+    <div id="box">
+      <div id="button">
+        <div id="optional">
+          <div onclick="switchsButton(JanuaryData,this)"></div>
+          <div onclick="switchsButton(FebruaryData,this)"></div>
+          <div onclick="switchsButton(MarchData,this)"></div>
+        </div>
+        <div id="notOptional">
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+          <div></div>
+        </div>
+      </div>
+      <div id="month">
+        <div id="optional_text">
+          <div onclick="switchsMonth(JanuaryData,this)">一月</div>
+          <div onclick="switchsMonth(FebruaryData,this)">二月</div>
+          <div onclick="switchsMonth(MarchData,this)">三月</div>
+        </div>
+        <div id="notOptional_text">
+          <div>四月</div>
+          <div>五月</div>
+          <div>六月</div>
+          <div>七月</div>
+          <div>八月</div>
+          <div>九月</div>
+          <div>十月</div>
+          <div>十一月</div>
+          <div>十二月</div>
+        </div>
+      </div>
+    </div>
+    <div id="notes"></div>
+    <script src="https://mapapi.qq.com/web/lbs/visualizationApi/demo/data/prism.js"></script>
+    <script src="https://mapapi.qq.com/web/lbs/visualizationApi/demo/data/maskLayerData.js"></script>
+    <script>
+      //初始化地图
+      var map = new TMap.Map("container", {
+        zoom: 16.5, //设置地图缩放级别
+        center: new TMap.LatLng(39.95062479772264, 116.22699864347408), //设置地图中心点坐标
+        pitch: 48.5, // 设置地图俯仰角
+        mapStyleId: "style4", //个性化样式
+        rotation: 351.7,
+        renderOptions: {
+          enableBloom: true, // 泛光
+        },
+        baseMap: {
+          type: "vector",
+          features: ["base", "building3d"], // 隐藏矢量文字
+        },
+      });
+
+      // 遮罩层
+      var MaskLayer = new TMap.MaskLayer({
+        map: map,
+        geometries: [{ paths: maskLayerData }],
+      });
+      //创建水晶体
+      var prism = new TMap.visualization.Prism({
+        enableLighting: true, //水晶体是否开启光照
+      }).addTo(map);
+
+      function addTo(data, index) {
+        var styles = {};
+        var paths = [];
+        var buildingHeight;
+        data.forEach((item) => {
+          buildingHeight = item.floor * 10;
+          item.area.forEach((i) => {
+            var style = "style" + buildingHeight + i.risk;
+            if (i.paths[0].toString().indexOf("116.") != -1) {
+              i.paths = i.paths.reverse();
+            } else {
+              i.paths = i.paths;
+            }
+            if (i.risk === null) {
+              styles[style] = {
+                topFillColor: "rgba(62,84,125,1)", //水晶体顶面颜色
+                sideFillColor: "rgba(51,69,102,1)", //水晶体侧面颜色
+                height: buildingHeight, //水晶体拔起高度
+              };
+
+              paths.push({
+                path: i.paths,
+                styleId: style,
+              });
+            } else if (i.risk === "low") {
+              styles[style] = {
+                topFillColor: "rgba(30,155,89,1)", //水晶体顶面颜色
+                sideFillColor: "rgba(25,130,74,1)", //水晶体侧面颜色
+                height: buildingHeight, //水晶体拔起高度
+              };
+              paths.push({
+                path: i.paths,
+                styleId: style,
+              });
+            } else if (i.risk === "middle") {
+              styles[style] = {
+                topFillColor: "rgba(223,138,57,1)", //水晶体顶面颜色
+                sideFillColor: "rgba(191,118,50,1)", //水晶体侧面颜色
+                height: buildingHeight, //水晶体拔起高度
+              };
+              paths.push({
+                path: i.paths,
+                styleId: style,
+              });
+            } else if (i.risk === "high") {
+              styles[style] = {
+                topFillColor: "rgba(212,84,66,1)", //水晶体顶面颜色
+                sideFillColor: "rgba(174,67,53,1)", //水晶体侧面颜色
+                height: buildingHeight, //水晶体拔起高度
+              };
+              paths.push({
+                path: i.paths,
+                styleId: style,
+              });
+            }
+          });
+        });
+        prism.setStyles(styles);
+        prism.setData(paths);
+      }
+      //默认数据
+      addTo(MarchData);
+      var optional_text = document.getElementById("optional_text");
+      var month = optional_text.children;
+      month[2].style.backgroundImage =
+        "url(" +
+        "https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/monthBackground.png" +
+        ")"; //月份默认选中
+
+      //选中圆点
+      function switchsButton(val, e) {
+        // 默认选中态消失
+        month[0].style.backgroundImage = null;
+        // 实现按钮选中效果
+        for (let index = 0; index < e.parentNode.children.length; index++) {
+          if (e.parentNode.children[index] === e) {
+            month[index].style.backgroundImage =
+              "url(" +
+              "https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/monthBackground.png" +
+              ")";
+            e.style.backgroundImage =
+              "url(" +
+              "https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/buttonSelec.png" +
+              ")";
+          } else {
+            month[index].style.backgroundImage = null;
+            e.parentNode.children[index].style.backgroundImage =
+              "url(" +
+              "https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/buttonOptional.png" +
+              ")";
+          }
+        }
+        //添加数据
+        addTo(val);
+      }
+      var optional = document.getElementById("optional");
+      //选中月份
+      function switchsMonth(val, e) {
+        month[0].style.backgroundImage = null;
+        // 实现月份选中效果
+        for (let index = 0; index < e.parentNode.children.length; index++) {
+          if (e.parentNode.children[index] === e) {
+            optional.children[index].style.backgroundImage =
+              "url(" +
+              "https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/buttonSelec.png" +
+              ")";
+            e.style.backgroundImage =
+              "url(" +
+              "https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/monthBackground.png" +
+              ")";
+          } else {
+            e.parentNode.children[index].style.backgroundImage = null;
+            optional.children[index].style.backgroundImage =
+              "url(" +
+              "https://mapapi.qq.com/web/lbs/visualizationApi/demo/img/buttonOptional.png" +
+              ")";
+          }
+        }
+        // 添加数据
+        addTo(val);
+      }
+    </script>
+  </body>
+</html>
+
+
+</body>
+</html>

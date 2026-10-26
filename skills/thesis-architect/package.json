@@ -1,0 +1,41 @@
+{
+  "name": "thesis-architect",
+  "version": "4.0.0",
+  "description": "论文建筑师 — 输出驱动，给方向就出框架，最少交互最快产出",
+  "author": "一梦繁星",
+  "license": "MIT",
+  "keywords": [
+    "论文",
+    "大纲生成",
+    "学术写作",
+    "快速出稿",
+    "毕业论文",
+    "选题",
+    "章节扩写"
+  ],
+  "skill": {
+    "type": "openclaw-skill",
+    "entry": "SKILL.md",
+    "modules": [
+      "快速起题器",
+      "大纲生成器",
+      "章节扩写器",
+      "材料加工厂"
+    ],
+    "templates_count": 6,
+    "templates": [
+      "undergraduate_arts",
+      "undergraduate_science",
+      "master_thesis",
+      "survey_research",
+      "case_study",
+      "experimental"
+    ]
+  },
+  "skillhub": {
+    "category": "education",
+    "tags": ["论文生成", "大纲生成", "学术写作", "快速出稿", "毕业论文"],
+    "difficulty": "beginner",
+    "language": "zh-CN"
+  }
+}

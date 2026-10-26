@@ -1,0 +1,11 @@
+[project]
+name = "image-gen"
+version = "0.1.0"
+description = "图片生成工具 — 无参考图生成、有参考图编辑、下载图片"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.28",
+]
+
+[project.scripts]
+image-gen = "script.image_gen:main"

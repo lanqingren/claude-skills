@@ -1,0 +1,8 @@
+interface:
+  display_name: "TripCue"
+  short_description: "用 Playwright DOM 读取春秋产品链接并生成营销 Prompt"
+  brand_color: "#F58220"
+  default_prompt: "Use $TripCue to read this travel product URL with Playwright DOM first. If no template is specified, ask me once with selectable options; preserve all selected templates if multiple are returned, then generate ready-to-copy prompts."
+
+policy:
+  allow_implicit_invocation: true

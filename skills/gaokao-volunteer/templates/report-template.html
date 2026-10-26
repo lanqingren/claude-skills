@@ -1,0 +1,693 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{{REPORT_TITLE}}</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;500;600;700;900&family=Noto+Sans+SC:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+/* ===== 湘·赋 Design System v6.0 | 金榜卷轴 · 朱印 · 墨竹 ===== */
+:root {
+  --hero-bg: #0a0e14;
+  --hero-bg2: #111720;
+  --hero-glow-gold: rgba(200,149,48,0.14);
+  --hero-glow-red: rgba(199,62,29,0.08);
+  --scroll-rod: linear-gradient(180deg,#8a6d2e 0%,#daa520 30%,#f5d061 50%,#daa520 70%,#8a6d2e 100%);
+  --bamboo-line: rgba(184,134,11,0.06);
+  --accent-red: #c73e1d;
+  --accent-red-deep: #9c2e15;
+  --accent-gold: #b8860b;
+  --accent-gold-light: #daa520;
+  --accent-gold-bright: #f5d061;
+  --accent-gold-soft: rgba(184,134,11,0.12);
+  --seal-red: #b91c1c;
+  --seal-red-bg: rgba(185,28,28,0.06);
+  --ink: #1c1917;
+  --ink-soft: #44403c;
+  --body-text: #57534e;
+  --muted: #a8a29e;
+  --bg: #fdfbf7;
+  --bg-warm: #f5f0e8;
+  --bg-card: #ffffff;
+  --bg-alt: #faf7f2;
+  --bg-paper: #fcf9f3;
+  --border: #e7e0d5;
+  --border-soft: #f0ebe2;
+  --rush: #b91c1c;
+  --rush-bg: #fef2f2;
+  --stable: #1d4ed8;
+  --stable-bg: #eff6ff;
+  --safe: #15803d;
+  --safe-bg: #f0fdf4;
+  --shadow-xs: 0 1px 2px rgba(28,25,23,0.03);
+  --shadow-sm: 0 1px 3px rgba(28,25,23,0.05), 0 1px 2px rgba(28,25,23,0.04);
+  --shadow: 0 4px 12px rgba(28,25,23,0.07), 0 1px 4px rgba(28,25,23,0.05);
+  --shadow-lg: 0 16px 48px rgba(28,25,23,0.12), 0 4px 16px rgba(28,25,23,0.06);
+  --shadow-hover: 0 24px 60px rgba(28,25,23,0.14), 0 8px 20px rgba(28,25,23,0.08);
+  --radius: 10px;
+  --radius-sm: 6px;
+  --radius-lg: 14px;
+  --max-w: 1040px;
+  --serif: 'Noto Serif SC', 'Songti SC', 'STSong', serif;
+  --sans: 'Noto Sans SC', -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif;
+  --mono: 'DM Mono', 'SF Mono', monospace;
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--ink);line-height:1.68;font-size:15px;-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;}
+
+/* ===== Navigation ===== */
+.nav{
+  position:sticky;top:0;z-index:100;
+  background:rgba(253,251,247,0.85);backdrop-filter:blur(20px) saturate(180%);
+  -webkit-backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border-soft);
+}
+.nav-inner{display:flex;align-items:center;gap:2px;max-width:var(--max-w);margin:0 auto;padding:0 24px;height:52px;overflow-x:auto;scrollbar-width:none;}
+.nav-inner::-webkit-scrollbar{display:none;}
+.nav-brand{font-family:var(--serif);font-weight:900;font-size:16px;color:var(--accent-gold);padding-right:16px;flex-shrink:0;letter-spacing:2px;}
+.nav-brand::before{content:'\\2756';margin-right:6px;font-size:10px;color:var(--accent-red);}
+.nav a{font-size:13px;font-weight:500;color:var(--body-text);text-decoration:none;padding:6px 12px;border-radius:var(--radius-sm);white-space:nowrap;transition:all .15s;}
+.nav a:hover{background:var(--bg-warm);color:var(--ink);}
+.nav a.active{color:var(--accent-red);font-weight:600;background:var(--seal-red-bg);}
+
+/* ===== Hero = 金榜卷轴 ===== */
+.hero{
+  background:var(--hero-bg);
+  padding:0;position:relative;overflow:hidden;
+}
+/* Bamboo slip texture */
+.hero::before{
+  content:'';position:absolute;top:0;left:0;right:0;bottom:0;
+  background:
+    repeating-linear-gradient(90deg,
+      transparent 0px,transparent 38px,
+      var(--bamboo-line) 38px,var(--bamboo-line) 39px,
+      transparent 39px,transparent 78px
+    ),
+    radial-gradient(ellipse 600px 300px at 80% 20%, var(--hero-glow-gold), transparent 70%),
+    radial-gradient(ellipse 400px 200px at 15% 80%, var(--hero-glow-red), transparent 70%);
+  pointer-events:none;
+}
+/* Top scroll rod */
+.hero-rod-top{
+  height:5px;width:100%;
+  background:var(--scroll-rod);
+  box-shadow:0 1px 8px rgba(218,165,32,0.3);
+  position:relative;z-index:2;
+}
+/* Bottom scroll rod */
+.hero-rod-bottom{
+  height:5px;width:100%;
+  background:var(--scroll-rod);
+  box-shadow:0 -1px 8px rgba(218,165,32,0.3);
+  position:relative;z-index:2;
+}
+.hero-inner{max-width:var(--max-w);margin:0 auto;padding:64px 24px 56px;position:relative;z-index:1;}
+.hero-eyebrow{
+  font-family:var(--mono);font-size:11px;color:var(--accent-gold);letter-spacing:3px;
+  text-transform:uppercase;margin-bottom:14px;font-weight:500;
+  display:flex;align-items:center;gap:10px;
+}
+.hero-eyebrow::after{content:'';flex:1;max-width:80px;height:1px;background:linear-gradient(90deg,var(--accent-gold),transparent);}
+.hero h1{
+  font-family:var(--serif);font-size:32px;font-weight:900;color:#fdfbf7;
+  letter-spacing:-0.5px;line-height:1.25;margin-bottom:8px;
+}
+.hero .subtitle{font-size:14px;color:rgba(253,251,247,0.45);font-weight:300;max-width:600px;}
+/* Gold divider = 金榜线 signature */
+.gold-divider{
+  display:flex;align-items:center;gap:12px;margin:28px 0 36px;
+}
+.gold-divider .line{flex:1;height:1px;background:linear-gradient(90deg,transparent,rgba(218,165,32,0.4),transparent);}
+.gold-divider .diamond{
+  width:8px;height:8px;background:var(--accent-gold-light);transform:rotate(45deg);
+  flex-shrink:0;box-shadow:0 0 8px rgba(218,165,32,0.4);
+}
+.hero-stats{display:flex;gap:48px;flex-wrap:wrap;align-items:flex-end;}
+.hero-stat .label{font-family:var(--mono);font-size:10px;color:rgba(253,251,247,0.28);text-transform:uppercase;letter-spacing:1.5px;font-weight:500;margin-bottom:6px;}
+.hero-stat .value{font-family:var(--serif);font-size:56px;font-weight:900;color:#fff;letter-spacing:-3px;line-height:0.95;}
+.hero-stat .value.gold{color:var(--accent-gold-bright);text-shadow:0 0 20px rgba(245,208,97,0.2);}
+.hero-stat .value.medium{font-size:34px;font-weight:700;}
+.hero-stat .sub{font-size:13px;color:rgba(253,251,247,0.32);margin-top:6px;}
+
+/* ===== Section ===== */
+.section{padding:56px 0;position:relative;}
+.section-alt{background:var(--bg-alt);}
+/* 朱印 section header */
+.section-header{margin-bottom:36px;display:flex;align-items:center;gap:14px;}
+.seal-num{
+  width:36px;height:36px;border-radius:var(--radius-sm);
+  background:var(--seal-red);color:#fff;
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);font-size:18px;font-weight:900;
+  flex-shrink:0;box-shadow:0 2px 8px rgba(185,28,28,0.25);
+  letter-spacing:0;
+}
+.section-eyebrow{
+  font-family:var(--mono);font-size:11px;color:var(--accent-gold);letter-spacing:1.5px;
+  text-transform:uppercase;font-weight:500;margin-bottom:2px;
+}
+.section-title{font-family:var(--serif);font-size:22px;font-weight:700;color:var(--ink);letter-spacing:-0.5px;line-height:1.3;}
+.section-subtitle{font-size:13px;color:var(--muted);font-weight:400;}
+.container{max-width:var(--max-w);margin:0 auto;padding:0 24px;}
+
+/* ===== Sub Heading ===== */
+.sub-h{font-family:var(--serif);font-size:16px;font-weight:600;margin:28px 0 14px;color:var(--ink);display:flex;align-items:center;gap:8px;}
+.sub-h::before{content:'';width:4px;height:16px;background:var(--accent-gold);border-radius:2px;flex-shrink:0;}
+
+/* ===== Rank Ruler (位次标尺) ===== */
+.rank-ruler{
+  background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);
+  padding:24px;margin-bottom:24px;box-shadow:var(--shadow-sm);
+}
+.rank-ruler-label{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:1px;margin-bottom:16px;}
+.rank-ruler-track{
+  position:relative;height:40px;background:var(--bg-warm);border-radius:8px;overflow:hidden;
+  display:flex;
+}
+.rank-ruler-zone{height:100%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:600;color:rgba(255,255,255,0.85);position:relative;}
+.rank-ruler-zone.rush{background:linear-gradient(135deg,var(--rush),#dc2626);flex:3;}
+.rank-ruler-zone.stable{background:linear-gradient(135deg,var(--stable),#2563eb);flex:4;}
+.rank-ruler-zone.safe{background:linear-gradient(135deg,var(--safe),#16a34a);flex:3;}
+.rank-ruler-marker{
+  position:absolute;top:-4px;bottom:-4px;width:3px;background:var(--accent-gold-light);
+  box-shadow:0 0 8px rgba(218,165,32,0.5);border-radius:2px;z-index:2;
+}
+.rank-ruler-marker::before{
+  content:'';position:absolute;top:-6px;left:50%;transform:translateX(-50%);
+  width:0;height:0;border-left:6px solid transparent;border-right:6px solid transparent;
+  border-top:6px solid var(--accent-gold-bright);
+}
+.rank-ruler-marker::after{
+  content:attr(data-label);position:absolute;top:-28px;left:50%;transform:translateX(-50%);
+  font-family:var(--mono);font-size:10px;color:var(--accent-gold);font-weight:600;white-space:nowrap;
+}
+
+/* ===== Info Boxes ===== */
+.info-box{border-radius:var(--radius);padding:16px 20px;margin-bottom:16px;border-left:4px solid;font-size:14px;}
+.info-box.blue{background:var(--stable-bg);border-color:var(--stable);color:#1e3a5f;}
+.info-box.red{background:var(--rush-bg);border-color:var(--rush);color:#7f231c;}
+.info-box.green{background:var(--safe-bg);border-color:var(--safe);color:#14532d;}
+.info-box.amber{background:#fffbeb;border-color:var(--accent-gold);color:#78350f;}
+.info-box strong{display:block;margin-bottom:6px;font-size:14px;}
+.info-box ul{margin:8px 0 0 20px;}
+.info-box li{margin-bottom:4px;}
+.info-box a{color:inherit;}
+
+/* ===== Urgent Banner ===== */
+.urgent-banner{background:var(--rush-bg);border:2px solid var(--rush);border-radius:var(--radius);padding:18px 24px;margin-bottom:24px;text-align:center;}
+.urgent-banner strong{color:var(--rush);font-size:16px;display:block;margin-bottom:4px;}
+
+/* ===== TOC ===== */
+.toc-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:36px;box-shadow:var(--shadow-sm);}
+.toc-card strong{font-family:var(--serif);display:block;margin-bottom:14px;font-size:15px;color:var(--ink);}
+.toc-card ol{padding-left:22px;column-count:2;column-gap:32px;}
+.toc-card li{margin-bottom:6px;font-size:14px;break-inside:avoid;}
+.toc-card a{color:var(--body-text);text-decoration:none;transition:color .15s;}
+.toc-card a:hover{color:var(--accent-red);}
+
+/* ===== Info Grid ===== */
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:12px;}
+.info-card{background:var(--bg-card);border:1px solid var(--border-soft);border-radius:var(--radius-sm);padding:16px 18px;transition:box-shadow .2s,border-color .2s;position:relative;overflow:hidden;}
+.info-card::before{content:'';position:absolute;left:0;top:0;width:3px;height:100%;background:var(--accent-gold-soft);opacity:0;transition:opacity .2s;}
+.info-card:hover{box-shadow:var(--shadow);border-color:var(--border);transform:translateY(-1px);}
+.info-card:hover::before{opacity:1;}
+.info-card .ic-label{font-family:var(--mono);font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;font-weight:500;margin-bottom:6px;}
+.info-card .ic-value{font-size:15px;font-weight:600;color:var(--ink);}
+
+/* ===== Score Bars ===== */
+.score-bars{display:flex;flex-direction:column;gap:8px;}
+.score-bar{display:flex;align-items:center;gap:10px;}
+.score-bar .sb-label{width:36px;font-size:12px;color:var(--body-text);text-align:right;flex-shrink:0;font-weight:600;}
+.score-bar .sb-track{flex:1;height:8px;background:var(--bg-warm);border-radius:4px;overflow:hidden;}
+.score-bar .sb-fill{height:100%;border-radius:4px;display:flex;align-items:center;justify-content:flex-end;padding-right:6px;font-size:10px;font-weight:600;color:#fff;background:linear-gradient(90deg,var(--accent-red),var(--accent-gold));transition:width .8s cubic-bezier(.16,1,.3,1);}
+.score-bar .sb-fill.accent{background:linear-gradient(90deg,#15803d,#22c55e);}
+
+/* ===== Strategy Cards ===== */
+.strategy-row{display:flex;gap:14px;flex-wrap:wrap;}
+.strategy-card{flex:1;min-width:160px;background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px 20px;text-align:center;box-shadow:var(--shadow-sm);transition:transform .2s,box-shadow .2s;position:relative;overflow:hidden;}
+.strategy-card:hover{transform:translateY(-2px);box-shadow:var(--shadow);}
+.strategy-card .sc-value{font-family:var(--serif);font-size:42px;font-weight:900;letter-spacing:-1px;line-height:1;}
+.strategy-card .sc-label{font-size:12px;color:var(--muted);margin-top:6px;font-weight:500;}
+.strategy-card.rush .sc-value{color:var(--rush);}
+.strategy-card.stable .sc-value{color:var(--stable);}
+.strategy-card.safe .sc-value{color:var(--safe);}
+.strategy-card .sc-bar{width:100%;height:4px;margin-top:14px;border-radius:2px;background:var(--border-soft);}
+.strategy-card.rush .sc-bar{background:var(--rush);opacity:0.3;}
+.strategy-card.stable .sc-bar{background:var(--stable);opacity:0.3;}
+.strategy-card.safe .sc-bar{background:var(--safe);opacity:0.3;}
+
+/* ===== Tags ===== */
+.tag{display:inline-block;padding:2px 10px;border-radius:999px;font-size:11px;font-weight:600;white-space:nowrap;}
+.tag-public{background:var(--safe-bg);color:#166534;border:1px solid #bbf7d0;}
+.tag-private{background:#fffbeb;color:#9a3412;border:1px solid #fed7aa;}
+.tag-independent{background:#faf5ff;color:#7e22ce;border:1px solid #e9d5ff;}
+.tag-vocational{background:var(--stable-bg);color:#1e40af;border:1px solid #bfdbfe;}
+.tag-chong{background:var(--rush-bg);color:#7f231c;border:1px solid #f5c6be;}
+.tag-wen{background:var(--stable-bg);color:#1e3a5f;border:1px solid #bfdbfe;}
+.tag-bao{background:var(--safe-bg);color:#14532d;border:1px solid #bbf7d0;}
+.tag-ok{background:var(--safe-bg);color:#166534;border:1px solid #bbf7d0;}
+.tag-danger{background:var(--rush-bg);color:#7f231c;border:1px solid #f5c6be;}
+.tag-warn{background:#fffbeb;color:#6b4f1e;border:1px solid #fae4b8;}
+
+/* ===== Key-Value Table ===== */
+.kt-table{width:100%;border-collapse:collapse;font-size:14px;margin:12px 0;}
+.kt-table th{padding:9px 14px;text-align:left;font-family:var(--mono);font-size:10px;font-weight:500;color:var(--muted);text-transform:uppercase;letter-spacing:0.8px;background:var(--bg-warm);border-bottom:2px solid var(--border);}
+.kt-table td{padding:10px 14px;border-bottom:1px solid var(--border-soft);}
+.kt-table tr:last-child td{border-bottom:none;}
+.kt-table .highlight{color:var(--safe);font-weight:600;}
+.kt-table .danger{color:var(--rush);font-weight:600;}
+.kt-table .warn{color:var(--accent-gold);font-weight:600;}
+
+/* ===== Tier Card ===== */
+.tier-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;margin-bottom:20px;box-shadow:var(--shadow-sm);transition:box-shadow .2s,border-color .2s;}
+.tier-card:hover{box-shadow:var(--shadow);}
+.tier-card.rush{border-left:4px solid var(--rush);}
+.tier-card.stable{border-left:4px solid var(--stable);}
+.tier-card.safe{border-left:4px solid var(--safe);}
+.tier-header{padding:14px 20px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border-soft);background:var(--bg-alt);}
+.tier-label{display:flex;align-items:center;gap:10px;font-family:var(--serif);font-size:15px;font-weight:600;color:var(--ink);}
+.tier-dot{width:8px;height:8px;border-radius:50%;}
+.rush .tier-dot{background:var(--rush);}
+.stable .tier-dot{background:var(--stable);}
+.safe .tier-dot{background:var(--safe);}
+.tier-prob{font-family:var(--mono);font-size:11px;color:var(--muted);font-weight:500;background:var(--bg-card);padding:3px 10px;border-radius:999px;}
+.tier-table{width:100%;border-collapse:collapse;font-size:13px;}
+.tier-table th{text-align:left;padding:10px 16px;font-family:var(--mono);font-size:10px;color:var(--muted);font-weight:500;text-transform:uppercase;letter-spacing:0.8px;background:var(--bg-warm);border-bottom:1px solid var(--border);}
+.tier-table td{padding:11px 16px;border-bottom:1px solid var(--border-soft);vertical-align:middle;}
+.tier-table tr:last-child td{border-bottom:none;}
+.tier-table tr:hover td{background:rgba(184,134,11,0.03);}
+.school-name{font-weight:600;color:var(--ink);}
+
+/* ===== School Detail Card ===== */
+.sd-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:24px;margin-bottom:20px;box-shadow:var(--shadow-sm);transition:box-shadow .2s,transform .2s;}
+.sd-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-2px);}
+.sd-header{display:flex;align-items:flex-start;justify-content:space-between;margin-bottom:16px;}
+.sd-name{font-family:var(--serif);font-size:17px;font-weight:700;color:var(--ink);letter-spacing:-0.3px;}
+.sd-meta{font-size:12px;color:var(--muted);margin-top:3px;}
+.sd-dot{margin:0 5px;}
+.sd-prob{font-family:var(--mono);font-size:11px;font-weight:600;padding:4px 14px;background:var(--ink);border-radius:999px;color:#fff;white-space:nowrap;}
+.sd-body{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-bottom:14px;}
+.sd-col ul{list-style:none;}
+.sd-col li{font-size:13px;color:var(--body-text);padding:4px 0;padding-left:14px;position:relative;}
+.sd-col li::before{content:'\\2014';position:absolute;left:0;color:var(--border);font-size:10px;top:4px;}
+.sd-col-label{font-family:var(--mono);font-size:10px;font-weight:600;margin-bottom:8px;text-transform:uppercase;letter-spacing:0.8px;}
+.sd-col-label.pro{color:var(--safe);}
+.sd-col-label.con{color:var(--rush);}
+.sd-ref{display:flex;flex-wrap:wrap;gap:4px 16px;padding-top:12px;border-top:1px solid var(--border-soft);font-size:13px;color:var(--body-text);}
+.sd-ref span{color:var(--muted);}
+.sd-risk{background:var(--rush-bg);border-radius:var(--radius-sm);padding:10px 14px;margin-top:12px;font-size:12px;color:var(--rush);}
+
+/* ===== Major Card ===== */
+.major-section-title{font-family:var(--mono);font-size:11px;font-weight:500;color:var(--muted);margin-bottom:16px;text-transform:uppercase;letter-spacing:0.8px;}
+.major-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:16px;}
+.major-card{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;box-shadow:var(--shadow-sm);transition:box-shadow .2s,transform .2s;}
+.major-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);}
+.mc-title{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:2px;}
+.mc-sub{font-size:11px;color:var(--muted);margin-bottom:14px;}
+.mc-grid{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;}
+.mc-item{background:var(--bg-alt);padding:8px 10px;border-radius:var(--radius-sm);}
+.mc-label{font-family:var(--mono);font-size:9px;color:var(--muted);text-transform:uppercase;letter-spacing:0.5px;font-weight:500;}
+.mc-value{font-size:12px;font-weight:600;color:var(--ink);margin-top:1px;}
+.mc-value.pos{color:var(--safe);}
+
+/* ===== Career Prospect Table ===== */
+.cp-section{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:22px;margin-bottom:16px;box-shadow:var(--shadow-sm);}
+.cp-title{font-family:var(--serif);font-size:15px;font-weight:700;color:var(--ink);margin-bottom:14px;}
+.cp-table{width:100%;border-collapse:collapse;font-size:13px;}
+.cp-table th,.cp-table td{padding:9px 14px;text-align:left;border-bottom:1px solid var(--border-soft);font-size:13px;}
+.cp-table th{background:var(--bg-warm);font-weight:600;color:var(--body-text);font-size:11px;text-transform:uppercase;letter-spacing:0.5px;width:14%;}
+.cp-table tr:last-child td{border-bottom:none;}
+
+/* ===== Alert ===== */
+.alert{display:flex;gap:14px;border-radius:var(--radius);padding:16px 20px;margin-bottom:12px;font-size:14px;border:1px solid;}
+.alert-icon{width:28px;height:28px;border-radius:var(--radius-sm);display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex-shrink:0;margin-top:1px;}
+.alert-title{font-weight:600;margin-bottom:2px;font-size:13px;}
+.alert-body{font-size:12px;line-height:1.7;color:inherit;opacity:0.85;}
+.alert-danger{background:var(--rush-bg);border-color:#f5c6be;color:#7f231c;}
+.alert-danger .alert-icon{background:#f5c6be;color:var(--rush);}
+.alert-danger .alert-title{color:var(--rush);}
+.alert-warning{background:#fffbeb;border-color:#fae4b8;color:#6b4f1e;}
+.alert-warning .alert-icon{background:#fae4b8;color:var(--accent-gold);}
+.alert-warning .alert-title{color:var(--accent-gold);}
+.alert-info{background:var(--stable-bg);border-color:#bfdbfe;color:#1e3a5f;}
+.alert-info .alert-icon{background:#bfdbfe;color:var(--stable);}
+.alert-info .alert-title{color:var(--stable);}
+.alert-success{background:var(--safe-bg);border-color:#bbf7d0;color:#14532d;}
+.alert-success .alert-icon{background:#bbf7d0;color:var(--safe);}
+.alert-success .alert-title{color:var(--safe);}
+
+/* ===== Cost Table ===== */
+.cost-table{width:100%;border-collapse:collapse;}
+.cost-table th,.cost-table td{padding:12px 20px;text-align:left;font-size:13px;border-bottom:1px solid var(--border-soft);}
+.cost-table th{background:var(--bg-warm);font-weight:600;color:var(--body-text);font-size:11px;text-transform:uppercase;letter-spacing:0.5px;}
+.cost-table td.num{font-family:var(--mono);font-variant-numeric:tabular-nums;font-weight:600;color:var(--ink);}
+.cost-table tr:last-child td{border-bottom:none;}
+
+/* ===== Checklist ===== */
+.checklist{background:var(--bg-card);border:1px solid var(--border);border-radius:var(--radius);padding:20px;box-shadow:var(--shadow-sm);}
+.checklist ol{padding-left:20px;}
+.checklist li{margin-bottom:8px;font-size:14px;color:var(--body-text);padding-left:4px;}
+.checklist li strong{color:var(--ink);}
+
+/* ===== Priority Table ===== */
+.priority-table{width:100%;border-collapse:collapse;margin:14px 0;font-size:13px;}
+.priority-table th,.priority-table td{padding:9px 14px;text-align:left;border-bottom:1px solid var(--border-soft);}
+.priority-table th{background:var(--bg-warm);font-weight:600;color:var(--body-text);font-size:10px;text-transform:uppercase;letter-spacing:0.6px;}
+.priority-table tr:last-child td{border-bottom:none;}
+.priority-table .rank{width:36px;font-family:var(--serif);font-weight:700;color:var(--accent-gold);text-align:center;font-size:16px;}
+
+/* ===== Footer ===== */
+.footer{text-align:center;padding:56px 24px;font-size:11px;color:var(--muted);border-top:1px solid var(--border);line-height:1.8;background:var(--bg-alt);}
+.footer .seal{font-family:var(--serif);font-size:14px;color:var(--accent-gold);font-weight:700;margin-bottom:8px;letter-spacing:1px;}
+
+/* ===== Scroll Reveal ===== */
+.reveal{opacity:0;transform:translateY(24px);transition:opacity .6s cubic-bezier(.16,1,.3,1),transform .6s cubic-bezier(.16,1,.3,1);}
+.reveal.visible{opacity:1;transform:translateY(0);}
+@media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none;}}
+
+/* ===== Responsive ===== */
+@media(max-width:768px){
+  .hero h1{font-size:22px;}
+  .hero-stat .value{font-size:40px;}
+  .hero-stats{gap:28px;}
+  .sd-body{grid-template-columns:1fr;}
+  .major-grid{grid-template-columns:1fr;}
+  .mc-grid{grid-template-columns:1fr 1fr;}
+  .info-grid{grid-template-columns:1fr 1fr;}
+  .strategy-row{flex-direction:column;}
+  .strategy-card{min-width:auto;}
+  .toc-card ol{column-count:1;}
+  .hero-inner{padding:48px 24px 40px;}
+  .section{padding:40px 0;}
+  .sd-header{flex-direction:column;gap:8px;}
+  .section-header{flex-wrap:wrap;}
+}
+@media(max-width:480px){
+  .info-grid{grid-template-columns:1fr;}
+  .container,.hero-inner{padding:0 16px;}
+  .hero-inner{padding:40px 16px 36px;}
+}
+@media print{
+  .nav{display:none;}
+  .section{page-break-inside:avoid;padding:24px 0;}
+  .reveal{opacity:1;transform:none;}
+  .tier-card,.sd-card,.major-card,.cp-section,.checklist{box-shadow:none;border:1px solid #ddd;page-break-inside:avoid;}
+  .hero{background:var(--hero-bg)!important;-webkit-print-color-adjust:exact;print-color-adjust:exact;}
+  .hero::before{display:none;}
+}
+</style>
+</head>
+<body>
+
+<!-- ===== Navigation ===== -->
+<nav class="nav">
+  <div class="nav-inner">
+    <span class="nav-brand">金榜题名</span>
+    <a href="#s1" data-sec="s1">基础信息</a>
+    <a href="#s2" data-sec="s2">分数定位</a>
+    <a href="#s3" data-sec="s3">体检约束</a>
+    <a href="#s4" data-sec="s4">志愿方案</a>
+    <a href="#s5" data-sec="s5">院校解析</a>
+    <a href="#s6" data-sec="s6">就业前景</a>
+    <a href="#s7" data-sec="s7">风险提醒</a>
+  </div>
+</nav>
+
+<!-- ===== Hero = 金榜卷轴 ===== -->
+<div class="hero-rod-top"></div>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-eyebrow">JINBANG &middot; GAOKAO VOLUNTEER REPORT</div>
+    <h1>{{REPORT_TITLE}}</h1>
+    <p class="subtitle">{{REPORT_SUBTITLE}}</p>
+    <div class="gold-divider"><div class="line"></div><div class="diamond"></div><div class="line"></div></div>
+    <div class="hero-stats">
+      <div class="hero-stat">
+        <div class="label">Score</div>
+        <div class="value gold">{{SCORE}}</div>
+        <div class="sub">高考总分</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Rank</div>
+        <div class="value">#{{RANK}}</div>
+        <div class="sub">全省位次</div>
+      </div>
+      <div class="hero-stat">
+        <div class="label">Subjects</div>
+        <div class="value medium">{{SUBJECTS}}</div>
+        <div class="sub">覆盖率 {{COVERAGE}}</div>
+      </div>
+    </div>
+  </div>
+</header>
+<div class="hero-rod-bottom"></div>
+
+<!-- ===== Urgent Banner ===== -->
+{{URGENT_BANNER}}
+
+<!-- ===== TOC ===== -->
+{{TOC}}
+
+<!-- ===== Section 1 ===== -->
+<section class="section" id="s1">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="seal-num">一</div>
+      <div>
+        <div class="section-eyebrow">CANDIDATE PROFILE</div>
+        <h2 class="section-title">考生基础信息</h2>
+        <p class="section-subtitle">Basic Profile</p>
+      </div>
+    </div>
+    <div class="info-grid reveal">
+      <div class="info-card"><div class="ic-label">省份</div><div class="ic-value">{{PROVINCE}}</div></div>
+      <div class="info-card"><div class="ic-label">高考模式</div><div class="ic-value">{{GAOKAO_MODE}}</div></div>
+      <div class="info-card"><div class="ic-label">科类</div><div class="ic-value">{{CATEGORY}}</div></div>
+      <div class="info-card"><div class="ic-label">选科组合</div><div class="ic-value">{{SUBJECTS}}</div></div>
+      <div class="info-card"><div class="ic-label">高考总分</div><div class="ic-value">{{SCORE}} 分</div></div>
+      <div class="info-card"><div class="ic-label">全省位次</div><div class="ic-value">第 {{RANK}} 名</div></div>
+      <div class="info-card"><div class="ic-label">选科覆盖率</div><div class="ic-value">{{COVERAGE}}</div></div>
+      <div class="info-card"><div class="ic-label">批次线对照</div><div class="ic-value">{{BATCH_LINE}}</div></div>
+      <div class="info-card"><div class="ic-label">地域偏好</div><div class="ic-value">{{REGION_PREF}}</div></div>
+      <div class="info-card"><div class="ic-label">家庭经济</div><div class="ic-value">{{ECONOMY}}</div></div>
+      <div class="info-card"><div class="ic-label">发展诉求</div><div class="ic-value">{{CAREER_PREF}}</div></div>
+      <div class="info-card"><div class="ic-label">体检条件</div><div class="ic-value">{{HEALTH_CONDITION}}</div></div>
+    </div>
+    {{SCORE_BREAKDOWN}}
+    {{DATA_ALERT}}
+    {{INFO_MISSING}}
+  </div>
+</section>
+
+<!-- ===== Section 2 ===== -->
+<section class="section section-alt" id="s2">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="seal-num">二</div>
+      <div>
+        <div class="section-eyebrow">SCORE POSITIONING</div>
+        <h2 class="section-title">分数位次定位与报考区间</h2>
+        <p class="section-subtitle">Score Positioning</p>
+      </div>
+    </div>
+    <h3 class="sub-h reveal">2.1 分数线对照</h3>
+    {{SCORE_LINE_TABLE}}
+    <h3 class="sub-h reveal">2.2 位次跨年对照</h3>
+    {{RANK_YOY_TABLE}}
+    {{SCORE_INTERPRETATION}}
+    <!-- 位次标尺 Rank Ruler -->
+    {{RANK_RULER}}
+    <h3 class="sub-h reveal">2.3 可报考层次判断</h3>
+    {{TIER_ACCESS_TABLE}}
+    {{TIER_CONCLUSION}}
+    <div class="strategy-row reveal" style="margin-top:24px">
+      <div class="strategy-card rush"><div class="sc-value">{{RUSH_PCT}}%</div><div class="sc-label">冲刺志愿</div><div class="sc-bar"></div></div>
+      <div class="strategy-card stable"><div class="sc-value">{{STABLE_PCT}}%</div><div class="sc-label">稳妥志愿</div><div class="sc-bar"></div></div>
+      <div class="strategy-card safe"><div class="sc-value">{{SAFE_PCT}}%</div><div class="sc-label">保底志愿</div><div class="sc-bar"></div></div>
+    </div>
+    {{ENROLLMENT_ADJUSTMENT}}
+  </div>
+</section>
+
+<!-- ===== Section 3 ===== -->
+<section class="section" id="s3">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="seal-num">三</div>
+      <div>
+        <div class="section-eyebrow">HEALTH CONSTRAINTS</div>
+        <h2 class="section-title">体检/色觉异常专业限制详解</h2>
+        <p class="section-subtitle">Health Constraints</p>
+      </div>
+    </div>
+    {{HEALTH_PREAMBLE}}
+    <h3 class="sub-h reveal">3.1 绝对禁止报考的专业</h3>
+    {{HEALTH_FORBIDDEN_TABLE}}
+    <h3 class="sub-h reveal">3.2 需注意的灰色地带专业</h3>
+    {{HEALTH_GRAY_ZONE}}
+    <h3 class="sub-h reveal">3.3 可以放心报考的专业</h3>
+    {{HEALTH_SAFE_TABLE}}
+    <h3 class="sub-h reveal">3.4 各科成绩与专业匹配分析</h3>
+    {{SUBJECT_MATCH_TABLE}}
+    {{SUBJECT_CONCLUSION}}
+  </div>
+</section>
+
+<!-- ===== Section 4 ===== -->
+<section class="section section-alt" id="s4">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="seal-num">四</div>
+      <div>
+        <div class="section-eyebrow">VOLUNTEER PLAN</div>
+        <h2 class="section-title">分批次志愿方案</h2>
+        <p class="section-subtitle">Volunteer Plan</p>
+      </div>
+    </div>
+    {{VOLUNTEER_RULES}}
+    <h3 class="sub-h reveal">4.1 冲刺梯队 {{RUSH_COUNT}}所 &mdash; 瞄准公办本科</h3>
+    {{RUSH_DESCRIPTION}}
+    {{RUSH_VOLUNTEERS}}
+    <h3 class="sub-h reveal">4.2 稳妥梯队 {{STABLE_COUNT}}所 &mdash; 核心匹配区间</h3>
+    {{STABLE_DESCRIPTION}}
+    {{STABLE_VOLUNTEERS}}
+    <h3 class="sub-h reveal">4.3 保底梯队 {{SAFE_COUNT}}所 &mdash; 确保不滑档</h3>
+    {{SAFE_DESCRIPTION}}
+    {{SAFE_VOLUNTEERS}}
+    <h3 class="sub-h reveal">4.4 兜底梯队 {{BOTTOM_COUNT}}所 &mdash; 绝对保底</h3>
+    {{BOTTOM_VOLUNTEERS}}
+    {{PLAN_SUMMARY}}
+  </div>
+</section>
+
+<!-- ===== Section 5 ===== -->
+<section class="section" id="s5">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="seal-num">五</div>
+      <div>
+        <div class="section-eyebrow">SCHOOL ANALYSIS</div>
+        <h2 class="section-title">重点院校与专业深度解析</h2>
+        <p class="section-subtitle">School Analysis</p>
+      </div>
+    </div>
+    <h3 class="sub-h reveal">5.1 冲刺梯队重点院校</h3>
+    {{RUSH_SCHOOL_DETAILS}}
+    <h3 class="sub-h reveal" style="margin-top:32px">5.2 稳妥梯队重点院校</h3>
+    {{STABLE_SCHOOL_DETAILS}}
+    <h3 class="sub-h reveal" style="margin-top:32px">5.3 保底梯队重点院校</h3>
+    {{SAFE_SCHOOL_DETAILS}}
+    {{PITFALL_WARNINGS}}
+  </div>
+</section>
+
+<!-- ===== Section 6 ===== -->
+<section class="section section-alt" id="s6">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="seal-num">六</div>
+      <div>
+        <div class="section-eyebrow">CAREER PROSPECTS</div>
+        <h2 class="section-title">就业前景评估</h2>
+        <p class="section-subtitle">Career Prospects</p>
+      </div>
+    </div>
+    {{CAREER_PROSPECTS}}
+    {{MAJOR_DETAILS}}
+    <h3 class="sub-h reveal">推荐专业优先级排序</h3>
+    {{PRIORITY_TABLE}}
+  </div>
+</section>
+
+<!-- ===== Section 7 ===== -->
+<section class="section" id="s7">
+  <div class="container">
+    <div class="section-header reveal">
+      <div class="seal-num">七</div>
+      <div>
+        <div class="section-eyebrow">RISK &amp; GUIDANCE</div>
+        <h2 class="section-title">填报风险提醒与实操建议</h2>
+        <p class="section-subtitle">Risk &amp; Guidance</p>
+      </div>
+    </div>
+    {{RISK_ALERTS}}
+    <h3 class="sub-h reveal">实操建议清单</h3>
+    {{PRACTICAL_TIPS}}
+    <h3 class="sub-h reveal">费用参考</h3>
+    {{COST_TABLE}}
+  </div>
+</section>
+
+<!-- ===== Footer ===== -->
+<div class="footer">
+  <div class="seal">&#9670;&#9670;&#9670;</div>
+  <p>数据来源：{{DATA_SOURCES}}</p>
+  <p>报告生成时间：{{GENERATED_AT}} &middot; Skill 版本：{{SKILL_VERSION}}</p>
+  <p style="margin-top:6px;font-size:10px;opacity:0.6">本报告基于往年投档数据，不构成填报保证，最终志愿请以省考试院官方系统为准</p>
+</div>
+
+<script>
+// ===== Scroll Reveal =====
+(function(){
+  var els = document.querySelectorAll('.reveal');
+  if (!('IntersectionObserver' in window) || els.length === 0) {
+    els.forEach(function(el){ el.classList.add('visible'); });
+    return;
+  }
+  var io = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) { e.target.classList.add('visible'); io.unobserve(e.target); }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -40px 0px' });
+  els.forEach(function(el){ io.observe(el); });
+})();
+
+// ===== Nav Active State =====
+(function(){
+  var links = document.querySelectorAll('.nav a[data-sec]');
+  var sections = [];
+  links.forEach(function(a){
+    var s = document.getElementById(a.dataset.sec);
+    if (s) sections.push({el: s, link: a});
+  });
+  if (sections.length === 0 || !('IntersectionObserver' in window)) return;
+  var io2 = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        links.forEach(function(l){ l.classList.remove('active'); });
+        var match = sections.find(function(s){ return s.el === e.target; });
+        if (match) match.link.classList.add('active');
+      }
+    });
+  }, { threshold: 0.3, rootMargin: '-52px 0px -50% 0px' });
+  sections.forEach(function(s){ io2.observe(s.el); });
+})();
+
+// ===== Smooth Score Bar Animation =====
+(function(){
+  var bars = document.querySelectorAll('.sb-fill');
+  if (bars.length === 0 || !('IntersectionObserver' in window)) return;
+  bars.forEach(function(b){
+    var w = b.style.width;
+    b.style.width = '0%';
+    b.dataset.target = w;
+  });
+  var io3 = new IntersectionObserver(function(entries){
+    entries.forEach(function(e){
+      if (e.isIntersecting) {
+        var b = e.target;
+        setTimeout(function(){ b.style.width = b.dataset.target; }, 100);
+        io3.unobserve(b);
+      }
+    });
+  }, { threshold: 0.3 });
+  bars.forEach(function(b){ io3.observe(b); });
+})();
+</script>
+
+</body>
+</html>

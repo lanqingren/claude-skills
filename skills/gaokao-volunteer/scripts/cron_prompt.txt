@@ -1,0 +1,31 @@
+执行高考志愿数据每日采集和回测任务。按以下步骤操作：
+
+1. 运行数据采集脚本（使用 cmd.exe /c 因为MSYS环境）：
+   cmd.exe /c "python D:/GitHub/xianyu/skills/gaokao-volunteer/scripts/daily_collect.py --source all"
+
+2. 检查脚本输出的采集报告，提取关键指标：
+   - 新增数据条数
+   - 回测命中率（冲/稳/保）
+   - 数据覆盖省份数
+
+3. 如果有新增数据，运行详细回测：
+   cmd.exe /c "python D:/GitHub/xianyu/skills/gaokao-volunteer/scripts/backtest_by_cat_v2.py"
+
+4. 根据回测结果更新 SKILL.md：
+   - 更新数据资产表中的记录数
+   - 更新FAQ中的命中率数据
+   - 更新附录A中的回测数据
+   - 如果命中率有显著变化，更新策略建议
+
+5. 生成当日采集摘要，包含：
+   - 新增了多少条数据
+   - 新增了多少个数据组（省份×科类）
+   - 回测命中率变化（对比上次）
+   - 数据覆盖情况（多少省有3年/2年/1年数据）
+   - 下次采集建议
+
+注意事项：
+- 使用 cmd.exe /c 执行python命令，避免MSYS路径转换问题
+- 如果EOL API限流，脚本会自动跳过，不影响其他数据源
+- 不要修改已有的数据，只做增量采集
+- 采集完成后自动保存报告到 collect_reports/ 目录

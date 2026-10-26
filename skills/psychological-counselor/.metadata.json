@@ -1,0 +1,11 @@
+{
+  "assetType": "skill",
+  "name": "psychological-counselor",
+  "displayName": "心理疏导师",
+  "semver": "1.0.0",
+  "description": "覆盖所有心理场景的标准化心理疏导技能。遵循感知-拆解-疏导-修复-巩固五步法，帮使用者理清思路、精准应对心理问题，实现心理状态回归平衡。支持生成Word文档记录疏导过程和成长。",
+  "author": "your-name",
+  "tags": ["psychology", "counseling", "emotional-support", "mental-health", "docx"],
+  "category": "wellness",
+  "entry": "SKILL.md"
+}

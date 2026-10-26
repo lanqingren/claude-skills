@@ -1,0 +1,4 @@
+﻿interface:
+  display_name: "论文参考文献格式化Skill"
+  short_description: "将论文文献信息整理为 GB/T 7714、APA、MLA 或 Chicago 引用格式。"
+  default_prompt: "Use $paper-reference-formatter to format these paper references in the citation style I choose."

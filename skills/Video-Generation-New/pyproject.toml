@@ -1,0 +1,11 @@
+[project]
+name = "video-gen"
+version = "0.1.0"
+description = "视频生成工具 — 提交任务、查询状态、下载视频"
+requires-python = ">=3.10"
+dependencies = [
+    "requests>=2.28",
+]
+
+[project.scripts]
+video-gen = "script.video_gen:main"
