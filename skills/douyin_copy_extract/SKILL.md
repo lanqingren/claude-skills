@@ -1,5 +1,4 @@
 ---
----
 slug: douyin-copy-extract
 name: douyin_copy_extract
 display_name: 抖音文案一键提取

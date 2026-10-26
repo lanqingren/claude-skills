@@ -1,5 +1,5 @@
 ---
-name:token-saver-qclaw
+name: token-saver-qclaw
 description: token智能省流助手，节省20%-70%token，自动对用户输入文本、代码片段、对话内容进行智能压缩，显著降低单次对话与上下文长度，从而节省模型推理开销、延长对话窗口、提升响应速度并降低 Token 消耗。
 ---
 

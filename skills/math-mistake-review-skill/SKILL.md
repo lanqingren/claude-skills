@@ -1,4 +1,4 @@
-﻿---
+---
 name: math-mistake-review-skill
 description: >-
   将初中数学错题照片转化为结构化复习素材。接收用户上传的错题图片（含原题与标答），

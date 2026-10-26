@@ -21,3 +21,5 @@ AI CLI 的「Codex 技能合集」从这个分支下载：可以一键全部安�
 | 搜索、资讯与知识管理 | 9 |
 
 部分技能需要另外配置 API Key、Python / Node、FFmpeg 或厂商命令行工具，以各技能的说明为准。
+
+为了让 Codex 能加载，以下技能只修正了 `SKILL.md` 开头的格式，正文没动：`douyin_copy_extract`（多了一行 `---`）、`math-mistake-review-skill`（文件头带 BOM）、`token-saver-qclaw`（`name:` 后缺空格）、`perfect-distillation-skill`（简介缩进不一致）、`memory-manager-v3`（简介里有冒号，加了引号）。

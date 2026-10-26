@@ -1,6 +1,6 @@
 ---
 name: memory-manager-v3
-description: Manage WorkBuddy .workbuddy/memory files with the bundled Python CLI: analyze, search, load, rank, summarize, report, token-check, cache preview, backup/export/import, and PROMPT_ template management. Use for memory manager, memory analysis, memory search, token budget check, cache cleanup preview, memory backup, prompt templates, 记忆管家, 记忆分析, 记忆搜索, Token检查, 缓存清理预览, 记忆备份, Prompt模板管理.
+description: 'Manage WorkBuddy .workbuddy/memory files with the bundled Python CLI: analyze, search, load, rank, summarize, report, token-check, cache preview, backup/export/import, and PROMPT_ template management. Use for memory manager, memory analysis, memory search, token budget check, cache cleanup preview, memory backup, prompt templates, 记忆管家, 记忆分析, 记忆搜索, Token检查, 缓存清理预览, 记忆备份, Prompt模板管理.'
 author: aakook
 organization: 叁五（汕尾）科技有限公司
 email: 38505053@qq.com
